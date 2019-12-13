@@ -10,10 +10,10 @@
         .row
           .col-sm-6
             =link_to "",class:"btn btn-twitter-inverse btn-block btn-lg" do
-              %i.fa.fa-twitter
+              %i.fab.fa-twitter
               Twitterアカウントで登録
             =link_to "",class:"btn btn-twitter-inverse btn-block btn-lg" do
-              %i.fa.fa-google
+              %i.fab.fa-google
               Googleアカウントで登録
             .help-block Quutaが許可無くTwitterに投稿することはありません。
             .sessionsLayout_guide
@@ -32,20 +32,20 @@
                 .help-block.js-email-invalid-message{style:"display: none"}
               .form-group
                 = f.password_field :password, class:"form-control", id:"user_password", "data-original-title": "パスワードは8文字以上32文字以内で、半角英字・数字・記号が使えます。", "data-placement": "top", "data-toggle": "tooltip", "data-trigger": "focus", placeholder:"パスワード", required:"required"
-              //recapcha
-              .form-group.recaptcha_container
-                %script{:async => "", :defer => "defer", :src => "https://www.google.com/recaptcha/api.js"}
-                .g-recaptcha{"data-sitekey" => "6LfNkiQTAAAAAM3UGnSquBy2akTITGNMO_QDxMw6"}
-                  %div{:style => "width: 304px; height: 78px;"}
-                    %div
-                      %iframe{:frameborder => "0", :height => "78", :name => "a-kg605339tqc6", :role => "presentation", :sandbox => "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox", :scrolling => "no", :src => "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfNkiQTAAAAAM3UGnSquBy2akTITGNMO_QDxMw6&co=aHR0cHM6Ly9xaWl0YS5jb206NDQz&hl=ja&v=PRkVene3wKrZUWATSylf69ja&size=normal&cb=6ai945gbs67g", :width => "304"}
-                    %textarea#g-recaptcha-response.g-recaptcha-response{:name => "g-recaptcha-response", :style => "width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"}
-                %noscript
-                  %div
-                    %div{:style => "width: 302px; height: 422px; position: relative;"}
-                      %div{:style => "width: 302px; height: 422px; position: absolute;"}
-                        %iframe{:frameborder => "0", :scrolling => "no", :src => "https://www.google.com/recaptcha/api/fallback?k=6LfNkiQTAAAAAM3UGnSquBy2akTITGNMO_QDxMw6", :style => "width: 302px; height:422px; border-style: none;"}
-                    %div{:style => "width: 300px; height: 60px; border-style: none;\r\n                bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px;\r\n                background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;"}
-                      %textarea#g-recaptcha-response.g-recaptcha-response{:name => "g-recaptcha-response", :style => "width: 250px; height: 40px; border: 1px solid #c1c1c1;\r\n                  margin: 10px 25px; padding: 0px; resize: none;", :value => ""}
+              //recapcha 導入時に使用
+              -# .form-group.recaptcha_container
+              -#   %script{:async => "", :defer => "defer", :src => "https://www.google.com/recaptcha/api.js"}
+              -#   .g-recaptcha{"data-sitekey" => "6LfNkiQTAAAAAM3UGnSquBy2akTITGNMO_QDxMw6"}
+              -#     %div{:style => "width: 304px; height: 78px;"}
+              -#       %div
+              -#         %iframe{:frameborder => "0", :height => "78", :name => "a-kg605339tqc6", :role => "presentation", :sandbox => "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox", :scrolling => "no", :src => "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfNkiQTAAAAAM3UGnSquBy2akTITGNMO_QDxMw6&co=aHR0cHM6Ly9xaWl0YS5jb206NDQz&hl=ja&v=PRkVene3wKrZUWATSylf69ja&size=normal&cb=6ai945gbs67g", :width => "304"}
+              -#       %textarea#g-recaptcha-response.g-recaptcha-response{:name => "g-recaptcha-response", :style => "width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"}
+              -#   %noscript
+              -#     %div
+              -#       %div{:style => "width: 302px; height: 422px; position: relative;"}
+              -#         %div{:style => "width: 302px; height: 422px; position: absolute;"}
+              -#           %iframe{:frameborder => "0", :scrolling => "no", :src => "https://www.google.com/recaptcha/api/fallback?k=6LfNkiQTAAAAAM3UGnSquBy2akTITGNMO_QDxMw6", :style => "width: 302px; height:422px; border-style: none;"}
+              -#       %div{:style => "width: 300px; height: 60px; border-style: none;\r\n                bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px;\r\n                background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;"}
+              -#         %textarea#g-recaptcha-response.g-recaptcha-response{:name => "g-recaptcha-response", :style => "width: 250px; height: 40px; border: 1px solid #c1c1c1;\r\n                  margin: 10px 25px; padding: 0px; resize: none;", :value => ""}
               .form-group
                 = f.submit class:"btn btn-primary btn-block btn-lg", "data-disable-with" => "新規登録", value:"新規登録"
