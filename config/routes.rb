@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     post 'login', to: 'devise/sessions#create'
     delete 'signout', to: 'devise/sessions#destroy'
   end
+  resources :articles
 end

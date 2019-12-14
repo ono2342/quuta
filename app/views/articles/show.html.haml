@@ -1,0 +1,7 @@
+#content
+  #mdraw
+    = @articles.text
+
+:javascript
+  document.getElementById('content').innerHTML =
+    marked(document.getElementById("mdraw").innerHTML);

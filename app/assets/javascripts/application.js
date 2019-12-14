@@ -16,6 +16,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require simplemde.min.js
 //= require_tree .
 
 $(function () {

@@ -1,0 +1,10 @@
+= form_for @article do |f|
+  .form-group
+    = f.text_area :text, class: 'form-control', size: '20x15', id:'mde'
+  .row.justify-content-md-center
+    = f.submit('投稿', class: 'btn btn-primary btn-lg')
+:javascript
+  const mde = new SimpleMDE({
+              element: document.getElementById("mde")
+          });
+          
