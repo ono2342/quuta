@@ -72,3 +72,5 @@ gem 'font-awesome-sass'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'pry-rails'
+gem 'recaptcha', require: "recaptcha/rails"
+gem 'dotenv-rails'
