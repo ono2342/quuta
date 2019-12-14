@@ -19,16 +19,14 @@
               =link_to "新規登録", "/signup" 
               から。
           .col-sm-6.sessionsLayoutFormColumn
-            =devise_error_messages!
-            =form_for resource, as: resource_name, url: signup_path do |f|
+            - flash.each do |name, msg|
+              = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+            =form_for resource, as: resource_name, url: login_path do |f|
               .form-group
-                = f.text_field :nickname, class:"form-control", id:"user_url_name", placeholder:"ユーザ名", required:"required"
+                = f.text_field :login, class:"form-control", id:"user_url_name", placeholder:"ユーザ名 また メールアドレス", required:"required"
               .form-group
-                %div
-                  = f.email_field :email, class:"form-control", id:"user_email", placeholder:"メールアドレス", required:"required"
-                  .help-block{style:"display: none;"}
-                .help-block.js-email-invalid-message{style:"display: none"}
-              .form-group
-                = f.password_field :password, class:"form-control", id:"user_password", "data-original-title": "パスワードは8文字以上32文字以内で、半角英字・数字・記号が使えます。", "data-placement": "top", "data-toggle": "tooltip", "data-trigger": "focus", placeholder:"パスワード", required:"required"
+                = f.password_field :password, class:"form-control", id:"user_password", "data-placement": "top", "data-toggle": "tooltip", "data-trigger": "focus", placeholder:"パスワード", required:"required"
+                .help-block
+                  =link_to "パスワードを忘れた場合",""
               .form-group
                 = f.submit class:"btn btn-primary btn-block btn-lg", "data-disable-with": "送信中……", value:"Quuta にログイン"
