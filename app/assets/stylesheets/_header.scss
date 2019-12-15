@@ -1,0 +1,164 @@
+.st-Header {
+  padding-right: 1.6rem;
+  padding-left: 1.6rem;
+  background-color: #55c500;
+  color: #fff;
+  .fa-caret-down {
+    color: rgba(0,0,0,.3);
+    transition: inherit;
+    font-size: 1.2rem;
+  }
+  .st-Header_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5.6rem;
+    max-width: 110rem;
+    margin-left: auto;
+    margin-right: auto;
+    .st-Header_start {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      position: relative;
+      .home-link {
+        margin-right: 0.5rem;
+      }
+      .st-Header_home {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        transition: color .08s ease-in-out;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-size: 1.2rem;
+        line-height: 1;
+        margin-top: 0.4rem;
+        margin-left: 2.4rem;
+        padding: 1.6rem 0;
+        outline: none;
+      }
+      .st-Header_community {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        transition: color .08s ease-in-out;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-size: 1.2rem;
+        line-height: 1;
+        margin-top: 0.4rem;
+        margin-right: 2.4rem;
+        margin-left: 2.4rem;
+        padding: 1.6rem 0;
+        outline: none;
+    }
+      .st-Header_search {
+        position: relative;
+        width: 20rem;
+        .fa {
+          position: absolute;
+          top: 1rem;
+          left: 0.9rem;
+          color: #aaa;
+        }
+        .fa-folder-open {
+          margin-right: 0.5rem;
+        }
+        .st-Header_searchInput {
+          width: 100%;
+          height: 3.2rem;
+          border: none;
+          border-radius: 0.4rem;
+          background-color: #fff;
+          font-size: 1.2rem;
+          box-shadow: inset 0 0.1rem 0.2rem #ccc;
+          padding-left: 3.2rem;
+          padding-right: 0.8rem;
+        }
+      }
+    }
+    .st-Header_end {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .st-Header_stock {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        color: #fff;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-size: 1.2rem;
+        line-height: 1;
+        margin-top: 0.4rem;
+        margin-right: 1.6rem;
+        padding: 1.6rem 0;
+        .st-Header_stock-label {
+          margin-left: 1rem;
+        }
+      }
+      .st-Header_postButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 3.2rem;
+        background-color: #3f9200;
+        color: #fff;
+        border-radius: 0.4rem;
+        font-size: 1.2rem;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding: 0 1.6rem 0 1.2rem;
+        margin-right: 1.6rem;
+        .fas {
+          display: inline-block;
+          font-size: inherit;
+          text-rendering: auto;
+          padding-right: 1.5rem;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      }
+      .u-relative {
+        position: relative;
+      }
+      // 未ログイン
+      .st-Header_signupButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 3.2rem;
+        color: #fff;
+        border-radius: 0.4rem;
+        border: 0.2rem solid #fff;
+        font-size: 1.2rem;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding: 0 1.6rem;
+        margin-right: 1.6rem;
+        transition: background-color .08s ease-in-out;
+        z-index: 1;
+      }
+      .st-Header_loginLink, .st-Header_logoutLink {
+        font-size: 1.2rem;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+}

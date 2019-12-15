@@ -1,0 +1,36 @@
+%footer#globalFooter.st-Footer
+  .st-Footer_container
+    .st-Footer_start.col-sm-12.col-md-5.col-lg-5
+      .st-Footer_logo
+        = link_to root_path,class:"home-link" do
+          = image_tag 'quuta.png', height:'36'
+      .st-Footer_catchcopy Baseball players is here.
+      .st-Footer_socials
+        %a.fab.fa-twitter
+        %a.fab.fa-facebook-square
+    .st-Footer_end.col-sm-12.col-md-7.col-lg-5
+      .st-Footer_qiita
+        .st-Footer_label Quuta
+        .st-Footer_list
+          .st-Footer_column
+            %a About
+            %a 利用規約
+            %a プライバシー
+            %a ガイドライン
+          .st-Footer_column
+            %a API
+            %a ご意見
+            %a ヘルプ
+            %a 広告掲載
+      .st-Footer_quuuta
+        .st-Footer_label Quuuta
+        .st-Footer_list
+          .st-Footer_column
+            %a About
+            %a 採用情報
+            %a ブログ
+          .st-Footer_column
+            %a Quuuta Team
+            %a Quuuta Jobs
+            %a Quuuta Zine
+  .st-Footer_copyright © 2019.
