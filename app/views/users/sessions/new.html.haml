@@ -1,17 +1,35 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+.sessionsLayout
+  .container
+    =image_tag "quuta.png", class:"quuta-logo"
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1
+        .sessionsLayoutHeader
+          .sessionsLayoutHeader_title Quutaにログイン
+        %hr/
+        .row
+          .col-sm-6
+            =link_to user_twitter_omniauth_authorize_path ,class:"btn btn-twitter-inverse btn-block btn-lg" do
+              %i.fab.fa-twitter
+              Twitterアカウントでログイン
+            =link_to user_google_oauth2_omniauth_authorize_path, class:"btn btn-twitter-inverse btn-block btn-lg" do
+              %i.fab.fa-google
+              Googleアカウントでログイン
+            =link_to user_facebook_omniauth_authorize_path ,class:"btn btn-twitter-inverse btn-block btn-lg" do
+              %i.fab.fa-facebook
+              Facebookアカウントで登録
+            .sessionsLayout_guide
+              もしQuutaのアカウントを持っていない場合は
+              =link_to "新規登録", "/signup" 
+              から。
+          .col-sm-6.sessionsLayoutFormColumn
+            - flash.each do |name, msg|
+              = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+            =form_for resource, as: resource_name, url: login_path do |f|
+              .form-group
+                = f.text_field :login, class:"form-control", id:"user_url_name", placeholder:"ユーザ名 また メールアドレス", required:"required"
+              .form-group
+                = f.password_field :password, class:"form-control", id:"user_password", "data-placement": "top", "data-toggle": "tooltip", "data-trigger": "focus", placeholder:"パスワード", required:"required"
+                .help-block
+                  =link_to "パスワードを忘れた場合",""
+              .form-group
+                = f.submit class:"btn btn-primary btn-block btn-lg", "data-disable-with": "送信中……", value:"Quuta にログイン"
