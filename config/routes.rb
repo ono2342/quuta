@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     get 'edit', to: 'devise/registrations#edit'
   end
   resources :articles
+  root 'homes#index'
 end
