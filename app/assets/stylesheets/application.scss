@@ -4,8 +4,13 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import 'simplemde.min.css';
-@import 'header';
-@import 'footer';
+
+// shared
+@import 'shared/header';
+@import 'shared/footer';
 
 // devise
 @import "devise/new";
+
+// articles
+@import "articles/show";
