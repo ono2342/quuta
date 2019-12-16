@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: quuta_production
-  username: quuta
-  password: <%= ENV['QUUTA_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
