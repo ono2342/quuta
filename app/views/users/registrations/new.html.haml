@@ -2,7 +2,7 @@
   .container
     =image_tag "quuta.png", class:"quuta-logo"
     .row
-      .col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1
+      .col-lg-8.col-lg-offset-2.col-md-offset-2.col-sm-offset-1
         .sessionsLayoutHeader
           .sessionsLayoutHeader_title Quutaへようこそ!
           %p.lead 新規登録(無料)して利用を開始しましょう。
@@ -12,10 +12,10 @@
             =link_to user_twitter_omniauth_authorize_path ,class:"btn btn-twitter-inverse btn-block btn-lg" do
               %i.fab.fa-twitter
               Twitterアカウントで登録
-            =link_to user_google_oauth2_omniauth_authorize_path ,class:"btn btn-twitter-inverse btn-block btn-lg" do
+            =link_to user_google_oauth2_omniauth_authorize_path ,class:"btn btn-google-inverse btn-block btn-lg" do
               %i.fab.fa-google
               Googleアカウントで登録
-            =link_to user_facebook_omniauth_authorize_path ,class:"btn btn-twitter-inverse btn-block btn-lg" do
+            =link_to user_facebook_omniauth_authorize_path ,class:"btn btn-facebook-inverse btn-block btn-lg" do
               %i.fab.fa-facebook
               Facebookアカウントで登録
             .help-block Quutaが許可無くTwitterに投稿することはありません。
