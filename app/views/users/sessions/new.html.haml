@@ -2,7 +2,7 @@
   .container
     =image_tag "quuta.png", class:"quuta-logo"
     .row
-      .col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1
+      .col-lg-8.col-lg-offset-2.col-md-offset-2.col-sm-offset-1
         .sessionsLayoutHeader
           .sessionsLayoutHeader_title Quutaにログイン
         %hr/
@@ -11,12 +11,12 @@
             =link_to user_twitter_omniauth_authorize_path ,class:"btn btn-twitter-inverse btn-block btn-lg" do
               %i.fab.fa-twitter
               Twitterアカウントでログイン
-            =link_to user_google_oauth2_omniauth_authorize_path, class:"btn btn-twitter-inverse btn-block btn-lg" do
+            =link_to user_google_oauth2_omniauth_authorize_path, class:"btn btn-google-inverse btn-block btn-lg" do
               %i.fab.fa-google
               Googleアカウントでログイン
-            =link_to user_facebook_omniauth_authorize_path ,class:"btn btn-twitter-inverse btn-block btn-lg" do
+            =link_to user_facebook_omniauth_authorize_path ,class:"btn btn-facebook-inverse btn-block btn-lg" do
               %i.fab.fa-facebook
-              Facebookアカウントで登録
+              Facebookアカウントでログイン
             .sessionsLayout_guide
               もしQuutaのアカウントを持っていない場合は
               =link_to "新規登録", "/signup" 
