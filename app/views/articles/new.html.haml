@@ -1,10 +1,12 @@
-= form_for @article do |f|
-  .form-group
-    = f.text_area :text, class: 'form-control', size: '20x15', id:'mde'
-  .row.justify-content-md-center
-    = f.submit('投稿', class: 'btn btn-primary btn-lg')
-:javascript
-  const mde = new SimpleMDE({
-              element: document.getElementById("mde")
-          });
-          
+.container
+  %h1 新規投稿
+  = form_with model:@article, local: true do |f|
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control', id: 'article_title'
+    .form-group
+      #editor
+        = f.label :text
+        = f.text_area :text, rows: 5, class: 'form-control', id: 'article_text', "v-model" => "input"
+        %div{"v-html" => "input | marked"}
+      = f.submit nil, class: 'btn btn-success'
