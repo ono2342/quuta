@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   end
   resources :articles
   root 'homes#index'
+
+  get 'profile/:user_name', to: 'profiles#show'
 end
