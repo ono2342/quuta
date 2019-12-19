@@ -1,0 +1,85 @@
+.p-error {
+  width: 80rem;
+  margin: 0 auto;
+  padding: 3.2rem 0;
+  .p-error_main {
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    .er-StatusCode {
+      width: 100%;
+      display: flex;
+      .er-StatusCode_quutan {
+        flex-shrink: 0;
+      }
+      .er-StatusCode_statusArea {
+        width: 100%;
+        margin-left: 2.4rem;
+        .er-StatusCode_status {
+          margin-bottom: 0.8rem;
+          .er-StatusCode_code {
+            font-weight: 700;
+            font-size: 6rem;
+            color: #555;
+          }
+          .er-StatusCode_text {
+            font-size: 3rem;
+            color: #aaa;
+            margin-left: 1.2rem;
+          }
+        }
+        .er-StatusCode_description {
+          width: 100%;
+          font-size: 1.6rem;
+          line-height: 1.8;
+          color: #555;
+          margin-bottom: 1.6rem;
+          overflow-wrap : break-word;
+        }
+        .er-StatusCode_link{
+          font-size: 1.4rem;
+          .fa {
+            display: inline-block;
+            font: normal normal normal 1.4rem/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+        }
+      }
+    }
+  }
+  .p-error_brank{
+    height: 30rem;
+
+  }
+
+}
+@media (max-width: 992px){
+  .p-error {
+    width: 100%;
+  }
+  .p-error_main {
+    justify-content: center;
+  }
+  .er-StatusCode {
+    flex-direction: column;
+    align-items: center;
+  }
+  .er-StatusCode_statusArea {
+    margin-left: 0;
+    padding: 0 1.6rem;
+  }
+  .er-StatusCode_status {
+    text-align: center;
+    margin-bottom: 1.6rem;
+  }
+  .er-StatusCode_code {
+    display: block;
+  }
+  .er-StatusCode_text {
+    font-size: 2rem;
+    margin-left: 0;
+  }
+}
