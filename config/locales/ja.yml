@@ -13,6 +13,7 @@ ja:
       user:
         nickname: ユーザー名
         email: メールアドレス
+        login: ユーザー名またはメールアドレス
         password: パスワード
   date:
     abbr_day_names:
