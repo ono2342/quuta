@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     delete 'signout', to: 'users/sessions#destroy'
     get 'edit', to: 'devise/registrations#edit'
   end
-  resources :articles
+  resources :articles do
+    collection do
+      post 'image'
+    end
+  end
   root 'homes#index'
 
   get 'profile/:user_name', to: 'profiles#show'

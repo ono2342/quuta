@@ -6,6 +6,11 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def image
+    image = Image.create(image_params)
+    render json: { filename: image.image.url }
+  end
+
   def create
     @article = Article.create(article_params)
   end
@@ -20,5 +25,9 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def image_params
+    params.require(:images).permit(:image)
   end
 end
