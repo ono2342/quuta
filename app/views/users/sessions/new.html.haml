@@ -22,8 +22,12 @@
               =link_to "新規登録", "/signup" 
               から。
           .col-sm-6.sessionsLayoutFormColumn
-            - flash.each do |name, msg|
-              = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+            -if notice || alert
+              .alert.alert-danger
+                .login_notice
+                  = notice
+                .login_alert
+                  = alert
             =form_for resource, as: resource_name, url: login_path do |f|
               .form-group
                 = f.text_field :login, class:"form-control", id:"user_url_name", placeholder:"ユーザ名 また メールアドレス", required:"required"

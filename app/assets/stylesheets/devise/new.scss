@@ -75,6 +75,24 @@
     .sessionsLayoutFormColumn {
       border-left: 0.1rem solid #eee;
       overflow: hidden;
+      .alert.alert-danger{
+        font-size: 1.3rem;
+        h2{
+          display: none;
+        }
+        ul{
+          margin-top:1rem;
+          padding-left: 0.5rem;
+          li{
+            list-style: none;
+            text-align: left;
+          }
+        }
+        .login_alert,
+        .login_notice{
+          margin: 1rem 0 1rem 0.5rem;
+        }
+      }
       .form-group {
         margin-bottom: 1.5rem;
         .form-control {
