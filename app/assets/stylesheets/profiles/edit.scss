@@ -1,0 +1,201 @@
+.p-settings {
+  color: #555;
+  .p-settings_container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    max-width: 110rem;
+    margin-right: auto;
+    margin-left: auto;
+    .p-settings_menu {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 28rem;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 1em;
+      background-color: #fff;
+      border: 0.1rem solid transparent;
+      padding: 1.6rem;
+      font-size: 1.4rem;
+      .p-settings_menuItem:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+      .p-settings_menuItem {
+        width: 100%;
+        font-weight: 400;
+        padding: 0.8rem 0;
+        border-top: 0.1rem solid #e8e8e8;
+        color: #555;
+      }
+      .p-settings_menuItem-active {
+        font-weight: 700;
+      }
+    }
+    .p-settings_main {
+      flex-grow: 1;
+      width: 0;
+      min-width: 0;
+      margin-left: 1.6rem;
+      background-color: #fff;
+      border: 0.1rem solid transparent;
+      padding: 3.2rem;
+      .p-settings_titleSection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 2.4rem;
+        margin-bottom: 3.2rem;
+        .p-settings_userLogo {
+          display: flex;
+          overflow: hidden;
+          border-radius: .2em;
+          width: 3.2rem;
+          height: 3.2rem;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: .2em;
+          }
+        }
+        .p-settings_userName:visited {
+          color: #555;
+        }
+        .p-settings_titleSeparator {
+          margin: 0 1.2rem;
+          font-size: 2.8rem;
+          color: #e8e8e8;
+        }
+        .p-settings_title {
+          font-weight: 700;
+        }
+      }
+      .simple_form{
+        .st-Form {
+          color: #555;
+          label{
+            font-size: 1.4rem;
+          }
+          .st-Form_label {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: currentColor;
+          }
+          .us-Form_twoColumn {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+          }
+            .st-Form_text {
+              display: block;
+              width: 100%;
+              font-size: 1.6rem;
+              background-color: #fff;
+              border-radius: 0.3rem;
+              border: 0.1rem solid #ccc;
+              transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+              padding: 0.8rem 1.6rem;
+              cursor: text;
+              margin-top: .6em;
+            }
+          
+          .us-Form_twoColumn>* {
+            max-width: 49%;
+          }
+          .st-Form_group {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            border-radius: 0.3rem;
+            margin-top: .6em;
+            overflow: hidden;
+            .st-Form_groupBefore, .st-Form_groupAfter {
+              color: #555;
+              text-align: center;
+              background-color: #eee;
+              border: 0.1rem solid #ccc;
+              padding: 0 0.8rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            .st-Form_groupBefore {
+              border-right: 0;
+              font-size: 1.4rem;
+            }
+            .st-Form_groupText {
+              display: block;
+              flex: 1 1;
+              font-size: 1.6rem;
+              background-color: #fff;
+              border: 0.1rem solid #ccc;
+              transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+              padding: 0.8rem 1.6rem;
+              cursor: text;
+            }
+          }
+        }
+        .st-Form_help {
+          font-size: 1.4rem;
+          color: #999;
+          margin-top: .6em;
+        }
+        .st-Form:not(:first-child) {
+          margin-top: 2.5em;
+        }
+        .st-Form_submit {
+          display: block;
+          -webkit-appearance: button;
+          color: #fff;
+          background-color: #55c500;
+          border: none;
+          border-radius: .2em;
+          font-size: 1.4rem;
+          padding: 0.8rem 2.4rem;
+          margin: 2.4rem auto 0;
+          cursor: pointer;
+          text-decoration: none;
+
+        }
+      }
+    }
+    @media (max-width: 770px){
+      .px-1\@s {
+        padding-right: 0.8rem;
+        padding-left: 0.8rem;
+        padding-top: 0.8rem;
+      }
+      .p-settings_menu {
+        width: 100%;
+        position: static;
+      }
+      .p-settings_main {
+        width: 100%;
+        margin-top: 1.6rem;
+        margin-left: auto;
+      }
+      .p-settings_titleSection {
+        font-size: 1.8rem;
+        justify-content: start;
+      }
+      .p-settings_userLogo {
+        display: flex;
+        overflow: hidden;
+        border-radius: .2em;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+
+.pt-4 {
+  padding-top: 3.2rem;
+}
+.px-2 {
+  padding-right: 1.6rem;
+  padding-left: 1.6rem;
+}

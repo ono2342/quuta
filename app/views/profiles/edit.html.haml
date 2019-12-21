@@ -1,0 +1,57 @@
+= render "shared/header"
+.p-settings.px-2.pt-4{class: "px-1@s pt-1@s"}
+  .p-settings_container
+    .p-settings_menu
+      %a.p-settings_menuItem.p-settings_menuItem-active{href: "/settings/profile"} 公開用プロフィール
+      %a.p-settings_menuItem{href: ""} アカウント
+    .p-settings_main
+      .p-settings_titleSection
+        %a.p-settings_userLogo{href: ""}
+          %img{src: "https://pbs.twimg.com/profile_images/1174154846615662593/S8pmypM9_bigger.jpg"}
+        %a.p-settings_userName{href: ""}
+          ="@#{current_user.nickname} アカウント"
+        %span.p-settings_titleSeparator /
+        %span.p-settings_title 公開用プロフィール
+      %form#edit_user_549538.simple_form.edit_user
+        .st-Form
+          %label.string.optional.st-Form_label 名前
+          .us-Form_twoColumn
+            %input#user_first_name.st-Form_text{ placeholder: "名", type: "text"}/
+            %input#user_last_name.st-Form_text{ placeholder: "姓", type: "text"}/
+        .st-Form
+          %label.email.optional.st-Form_label 公開メールアドレス
+          %div
+            %label
+              %input{ type: "hidden", value: "0"}/
+              %input#user_public_email.st-Form_checkbox{ type: "checkbox" }/
+              メールアドレスを全体に公開する
+          .st-Form_help
+            誰もがあなたのメールアドレス(
+            %small
+              = current_user.email
+            )を見れる状態になります。
+            %a{href: "/settings/notifications"} メールアドレスを変更
+        .st-Form.team
+          %label.st-Form_label.position 所属チーム
+          %input#user_website_url.st-Form_text{type:"text"}        
+        .st-Form.position
+          %label.st-Form_label.position ポジション
+          %input#user_website_url.st-Form_text{type:"text"}
+        .st-Form.batting_throwing
+          %label.st-Form_label.batting_throwing 投打
+          %input#user_organization.st-Form_text{type:"text"}
+        .st-Form.text.optional.user_description
+          %label.st-Form_label.text.optional 自己紹介
+          %textarea#user_description.st-Form_text.text.optional
+        .st-Form
+          %label.string.optional.st-Form_label Twitter ID
+          .st-Form_group
+            .st-Form_groupBefore https://twitter.com/
+            %input#user_twitter_id.st-Form_groupText{ type:"text" }
+        .st-Form
+          %label.string.optional.st-Form_label Facebook ID
+          .st-Form_group
+            .st-Form_groupBefore https://www.facebook.com/
+            %input#user_facebook_id.st-Form_groupText{ type:"text" }
+        %input.st-Form_submit{type: "submit", value: "更新する"}/
+= render "shared/footer"
