@@ -11,7 +11,12 @@ Rails.application.routes.draw do
     delete 'signout', to: 'users/sessions#destroy'
     get 'edit', to: 'devise/registrations#edit'
   end
-  resources :articles
+  resources :articles do
+    collection do
+      post 'image'     # 画像ドラッグドロップの処理
+      post 'image2'    # 画像選択の処理
+    end
+  end
   root 'homes#index'
 
   get 'profile/:user_name', to: 'profiles#show'
