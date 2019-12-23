@@ -137,6 +137,39 @@
               cursor: text;
             }
           }
+          .select-wrrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            .st-Form_select{
+              display: block;
+              width: 100%;
+              font-size: 1.6rem;
+              background-color: #fff;
+              border-radius: 0.3rem;
+              border: 0.1rem solid #ccc;
+              transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+              padding: 0.8rem 1.6rem;
+              cursor: text;
+              margin-top: .6em;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+            }
+            .select-arrow {
+              position: absolute;
+              right: 1.6rem;
+              top: 50%;
+              z-index: 2;
+              color: #888;
+              font-size: 1.8rem;
+              -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%);
+            }
+          }
+          textarea{
+            min-height: 15rem;
+          }
         }
         .st-Form_help {
           font-size: 1.4rem;
