@@ -6,9 +6,15 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  def image
+  def image # 画像ドラッグドロップの処理
     image = Image.create(image_params)
     render json: { filename: image.image.url }
+  end
+
+  def image2 # 画像選択の処理
+    @image = Image.create(image2_params)
+    @image_url = @image.image
+    render json: @image_url
   end
 
   def create
@@ -29,5 +35,9 @@ class ArticlesController < ApplicationController
 
   def image_params
     params.require(:images).permit(:image)
+  end
+
+  def image2_params
+    params.permit(:image)
   end
 end

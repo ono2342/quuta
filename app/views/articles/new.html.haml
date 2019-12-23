@@ -1,5 +1,6 @@
 .container
   %h1 新規投稿
+  %input{type: "file", id: 'image_file', name: 'images', value: 'image'}
   = form_with model:@article, local: true do |f|
     .form-group
       = f.label :title

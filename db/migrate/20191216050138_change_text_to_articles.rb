@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeTextToArticles < ActiveRecord::Migration[5.2]
   def up
     change_column :articles, :text, :text, null: false

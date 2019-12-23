@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   end
   resources :articles do
     collection do
-      post 'image'
+      post 'image'     # 画像ドラッグドロップの処理
+      post 'image2'    # 画像選択の処理
     end
   end
   root 'homes#index'
