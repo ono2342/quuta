@@ -73,7 +73,7 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave'
 gem 'coderay'
 gem 'devise'
