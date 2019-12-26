@@ -1,37 +1,39 @@
+# frozen_string_literal: true
+
 Category.create!(
   [
     {
-      name: '内野手',
+      name: '内野手'
     },
     {
-      name: '外野手',
+      name: '外野手'
     },
     {
-      name: 'ピッチャー',
+      name: 'ピッチャー'
     },
     {
-      name: 'キャッチャー',
+      name: 'キャッチャー'
     },
     {
-      name: 'ファースト',
+      name: 'ファースト'
     },
     {
-      name: 'セカンド',
+      name: 'セカンド'
     },
     {
-      name: 'サード',
+      name: 'サード'
     },
     {
-      name: 'ショート',
+      name: 'ショート'
     },
     {
-      name: 'レフト',
+      name: 'レフト'
     },
     {
-      name: 'センター',
+      name: 'センター'
     },
     {
       name: 'ライト'
-    },
+    }
   ]
 )

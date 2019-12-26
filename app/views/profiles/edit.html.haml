@@ -9,20 +9,27 @@
         %a.p-settings_userLogo{href: ""}
           //アイコン機能実装時、変更
           %img{src: "https://pbs.twimg.com/profile_images/1174154846615662593/S8pmypM9_bigger.jpg"}
-        =link_to "",{class:"p-settings_userName"} do
-          ="@#{current_user.nickname} アカウント"
+        -if current_user.nickname.nil?
+          =link_to "", {class:"p-setteings_nameNil"} do
+            ユーザー名を設定してください
+        -else
+          =link_to "",{class:"p-settings_userName"} do
+            ="@#{current_user.nickname} アカウント"
         %span.p-settings_titleSeparator /
         %span.p-settings_title 公開用プロフィール
       =form_for @profile,url:setting_profile_path, html:{id:"edit_user", class:"simple_form edit_user"} do |f|
         .st-Form
           %label.string.optional.st-Form_label 名前
           .us-Form_twoColumn
-            = f.text_field :firstname ,placeholder: "名", id:"user_first_name", class:"st-Form_text"
             = f.text_field :lastname ,placeholder: "姓", id:"user_last_name", class:"st-Form_text"
-          .st-Form_help
-            500文字以内
-          .st-Form_help
-            500文字以内
+            = f.text_field :firstname ,placeholder: "名", id:"user_first_name", class:"st-Form_text"
+          .error_wrapper
+            .st-Form_help
+              -if @profile.errors.messages[:lastname].any?
+                = render 'layouts/validates_error', errors:@profile.errors.full_messages_for(:lastname)
+            .st-Form_help
+              -if @profile.errors.messages[:firstname].any?
+                = render 'layouts/validates_error', errors:@profile.errors.full_messages_for(:firstname)
         .st-Form
           %label.email.optional.st-Form_label 公開メールアドレス
           %div
@@ -30,14 +37,20 @@
               = f.check_box :email_status, id:"user_public_email", class:"st-Form_checkbox"
               メールアドレスを全体に公開する
           .st-Form_help
-            誰もがあなたのメールアドレス(
-            %small
-              = current_user.email
-            )を見れる状態になります。
+            - if @email.present?
+              誰もがあなたのメールアドレス(
+              %small
+                = @email
+              )を見れる状態になります。
+            - else
+              メールアドレスは設定されていません
             =link_to "メールアドレスを変更", ""
         .st-Form.team
           %label.st-Form_label.position 所属チーム
           = f.text_field :team ,placeholder: "現在所属しているチーム、学校名など", id:"user_team", class:"st-Form_text"
+        .st-Form_help
+          -if @profile.errors.messages[:team].any?
+            = render 'layouts/validates_error', errors:@profile.errors.full_messages_for(:team)
         .st-Form.position
           %label.st-Form_label.position ポジション
           .select-wrrapper
@@ -50,16 +63,19 @@
             .select-wrrapper
               .select-arrow{style:"margin-top: 0.6rem;"}
                 %i.fas.fa-chevron-down
-              = f.select :position, @batting,{include_blank: "---"},{class:"st-Form_select"}
+              = f.select :batting, @batting,{include_blank: "---"},{class:"st-Form_select"}
             .select-wrrapper
               .select-arrow{style:"margin-top: 0.6rem;"}
                 %i.fas.fa-chevron-down
-              = f.select :position, @throwing,{include_blank: "---"},{class:"st-Form_select"}
+              = f.select :throwing, @throwing,{include_blank: "---"},{class:"st-Form_select"}
         .st-Form.text.optional.user_description
           %label.st-Form_label.text.optional 自己紹介
           = f.text_area :description ,placeholder: "あなたの球歴、好きな選手、得意なプレーなど、ご自由にお書きください", id:"user_description", class:"st-Form_text"
           .st-Form_help
-            500文字以内
+            -if @profile.errors.messages[:description].any?
+              = render 'layouts/validates_error', errors:@profile.errors.full_messages_for(:description)
+            -else 
+              500文字以内
         .st-Form
           %label.string.optional.st-Form_label Twitter ID
           .st-Form_group

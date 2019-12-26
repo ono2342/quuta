@@ -41,6 +41,6 @@ class User < ApplicationRecord
 
   # ユーザー作成時に空のユーザープロフィールを作成
   def create_profile
-    Profile.create(user_id:id)
+    Profile.create(user_id: id)
   end
 end

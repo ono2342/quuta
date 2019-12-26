@@ -15,6 +15,19 @@ ja:
         email: メールアドレス
         login: ユーザー名またはメールアドレス
         password: パスワード
+    models:    
+      profile: プロフィール
+    attributes:
+      profile:
+        firstname: 名
+        lastname: 姓
+        team: 所属チーム・学校名
+        position: ポジション
+        batting: 打撃
+        throwing: 投球
+        description: 自己紹介
+        twitter: TwitterID
+        facebook: FacebookID
   date:
     abbr_day_names:
     - 日
