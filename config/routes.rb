@@ -21,4 +21,5 @@ Rails.application.routes.draw do
 
   get 'profile/:user_name', to: 'profiles#show'
   get 'setting/profile', to: 'profiles#edit'
+  patch 'setting/profile', to: 'profiles#update'
 end
