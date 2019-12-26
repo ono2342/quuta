@@ -1,19 +1,19 @@
 = render "shared/header"
-.p-settings.px-2.pt-4{class: "px-1@s pt-1@s"}
-  .p-settings_container
-    .p-settings_menu
-      =link_to "プロフィール", "/setting/profile", {class:"p-settings_menuItem "}
-      =link_to "ユーザー設定","/setting/account",{class:"p-settings_menuItem p-settings_menuItem-active"}
-    .p-settings_main
-      .p-settings_titleSection
+.setting.px-2.pt-4{class: "px-1@s pt-1@s"}
+  .setting_container
+    .setting_menu
+      =link_to "プロフィール", "/setting/profile", {class:"setting_menuItem "}
+      =link_to "ユーザー設定","/setting/account",{class:"setting_menuItem setting_menuItem-active"}
+    .setting_main
+      .setting_titleSection
         -if current_user.nickname.nil?
           =link_to "/setting/account", {class:"p-setteings_nameNil"} do
             ユーザー名が設定されていません
         -else
-          =link_to "",{class:"p-settings_userName"} do
+          =link_to "",{class:"setting_userName"} do
             ="@#{current_user.nickname} アカウント"
-        %span.p-settings_titleSeparator /
-        %span.p-settings_title ユーザー設定
+        %span.setting_titleSeparator /
+        %span.setting_title ユーザー設定
       =form_for @user,url:setting_account_path, html:{id:"edit_user", class:"simple_form edit_user"} do |f|
         .st-Form.email
           %label.st-Form_label.position メールアドレス
