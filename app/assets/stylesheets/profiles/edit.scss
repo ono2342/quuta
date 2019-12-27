@@ -181,7 +181,14 @@
             .st-Form_help {
               width:100%;
             }
-
+          }
+          .icon_wrapper{
+            display: flex;
+            .btn-info{
+              font-size: 1.4rem;
+              padding: 0.8rem 1.6rem;
+              margin-top: .6em;
+            }
           }
         }
         .st-Form_help {

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2], authentication_keys: [:login]
   after_create :create_profile
+  mount_uploader :icon, ImageUploader
 
   # アソシエーション
   has_many :articles

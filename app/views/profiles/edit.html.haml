@@ -6,10 +6,13 @@
       =link_to "ユーザー設定","/setting/account",{class:"setting_menuItem"}
     .setting_main
       .setting_titleSection
-        // ユーザーマイページへのリンク
+        // ユーザーマイページへのリンクを貼る
         %a.setting_userLogo{href: ""} 
-          //アイコン機能実装時、変更
-          %img{src: "https://pbs.twimg.com/profile_images/1174154846615662593/S8pmypM9_bigger.jpg"}
+          //アイコン
+          -if current_user.icon.present?
+            =image_tag current_user.icon.url
+          -else 
+            =image_tag "quutan.jpg"
         -if current_user.nickname.nil?
           =link_to "/setting/account", {class:"p-setteings_nameNil"} do
             ユーザー名が設定されていません

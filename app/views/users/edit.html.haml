@@ -6,6 +6,13 @@
       =link_to "ユーザー設定","/setting/account",{class:"setting_menuItem setting_menuItem-active"}
     .setting_main
       .setting_titleSection
+        // ユーザーマイページへのリンクを貼る
+        %a.setting_userLogo{href: ""} 
+          //アイコン
+          -if current_user.icon.present?
+            =image_tag current_user.icon.url
+          -else 
+            =image_tag "quutan.jpg"
         -if current_user.nickname.nil?
           =link_to "/setting/account", {class:"p-setteings_nameNil"} do
             ユーザー名が設定されていません
@@ -15,14 +22,23 @@
         %span.setting_titleSeparator /
         %span.setting_title ユーザー設定
       =form_for @user,url:setting_account_path, html:{id:"edit_user", class:"simple_form edit_user"} do |f|
+        .st-Form.icon
+          = f.file_field :icon ,id:"lefile", style:"display:none"
+          .icon_wrapper
+            %input#photoCover.st-Form_text{placeholder:"（仮）10MBまでアップロードできます", type:"text"}
+            %button.btn.btn-info{onclick:"$('input[id=lefile]').click();", type:"button"} ファイル選択
+        .st-Form_help
+          空の状態で更新することで削除できます。
+          -if @user.errors.messages[:icon].any?
+            = render 'layouts/validates_error', errors:@user.errors.full_messages_for(:icon)
         .st-Form.email
-          %label.st-Form_label.position メールアドレス
+          %label.st-Form_label メールアドレス
           = f.text_field :email ,placeholder: "xxx@xxx", id:"user_email", class:"st-Form_text",value:@email
         .st-Form_help
           -if @user.errors.messages[:email].any?
             = render 'layouts/validates_error', errors:@user.errors.full_messages_for(:email)
         .st-Form.nickname
-          %label.st-Form_label.position ユーザー名
+          %label.st-Form_label ユーザー名
           = f.text_field :nickname ,placeholder: "ユーザー名は半角英字と「-」が使用できます", id:"user_nickname", class:"st-Form_text"
         .st-Form_help
           -if @user.errors.messages[:nickname].any?
