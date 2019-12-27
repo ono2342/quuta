@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2], authentication_keys: [:login]
   after_create :create_profile
+  mount_uploader :icon, ImageUploader
 
   # アソシエーション
   has_many :articles
@@ -14,7 +15,7 @@ class User < ApplicationRecord
   # バリデーション
   validates :nickname, presence: true, length: { maximum: 32 }, format: { with: /\A[-a-z]+\z/, message: 'は半角英字と「-」が使えます。' }, allow_blank: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, length: { in: 8..32 }, format: { with: /\A[a-zA-Z0-9!-~]+\z/, message: 'は8文字以上32文字以下で、半角英字、数字、記号が使えます。' }
+  validates :password, on: :create, presence: true, length: { in: 8..32 }, format: { with: /\A[a-zA-Z0-9!-~]+\z/, message: 'は8文字以上32文字以下で、半角英字、数字、記号が使えます。' }
 
   attr_accessor :login
 

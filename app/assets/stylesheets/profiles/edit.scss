@@ -1,13 +1,13 @@
-.p-settings {
+.setting {
   color: #555;
-  .p-settings_container {
+  .setting_container {
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
     max-width: 110rem;
     margin-right: auto;
     margin-left: auto;
-    .p-settings_menu {
+    .setting_menu {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -19,22 +19,22 @@
       border: 0.1rem solid transparent;
       padding: 1.6rem;
       font-size: 1.4rem;
-      .p-settings_menuItem:first-child {
+      .setting_menuItem:first-child {
         border-top: none;
         padding-top: 0;
       }
-      .p-settings_menuItem {
+      .setting_menuItem {
         width: 100%;
         font-weight: 400;
         padding: 0.8rem 0;
         border-top: 0.1rem solid #e8e8e8;
         color: #555;
       }
-      .p-settings_menuItem-active {
+      .setting_menuItem-active {
         font-weight: 700;
       }
     }
-    .p-settings_main {
+    .setting_main {
       flex-grow: 1;
       width: 0;
       min-width: 0;
@@ -42,14 +42,14 @@
       background-color: #fff;
       border: 0.1rem solid transparent;
       padding: 3.2rem;
-      .p-settings_titleSection {
+      .setting_titleSection {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
         font-size: 2.4rem;
         margin-bottom: 3.2rem;
-        .p-settings_userLogo {
+        .setting_userLogo {
           display: flex;
           overflow: hidden;
           border-radius: .2em;
@@ -61,15 +61,15 @@
             border-radius: .2em;
           }
         }
-        .p-settings_userName:visited {
+        .setting_userName:visited {
           color: #555;
         }
-        .p-settings_titleSeparator {
+        .setting_titleSeparator {
           margin: 0 1.2rem;
           font-size: 2.8rem;
           color: #e8e8e8;
         }
-        .p-settings_title {
+        .setting_title {
           font-weight: 700;
         }
         .p-setteings_nameNil{
@@ -181,7 +181,14 @@
             .st-Form_help {
               width:100%;
             }
-
+          }
+          .icon_wrapper{
+            display: flex;
+            .btn-info{
+              font-size: 1.4rem;
+              padding: 0.8rem 1.6rem;
+              margin-top: .6em;
+            }
           }
         }
         .st-Form_help {
@@ -213,20 +220,20 @@
         padding-left: 0.8rem;
         padding-top: 0.8rem;
       }
-      .p-settings_menu {
+      .setting_menu {
         width: 100%;
         position: static;
       }
-      .p-settings_main {
+      .setting_main {
         width: 100%;
         margin-top: 1.6rem;
         margin-left: auto;
       }
-      .p-settings_titleSection {
+      .setting_titleSection {
         font-size: 1.8rem;
         justify-content: start;
       }
-      .p-settings_userLogo {
+      .setting_userLogo {
         display: flex;
         overflow: hidden;
         border-radius: .2em;
