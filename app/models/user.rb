@@ -11,6 +11,11 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :articles
   has_one :profile, dependent: :destroy
+  has_many :relations, dependent: :destroy
+  has_many :followings, through: :relationships, source: :follower
+  has_many :reverse_of_relation, class_name: 'Relation', foreign_key: 'follower_id'
+  has_many :followers, through: :reverse_of_relations, source: :user
+
 
   # バリデーション
   validates :nickname, presence: true, length: { maximum: 32 }, format: { with: /\A[-a-z]+\z/, message: 'は半角英字と「-」が使えます。' }, allow_blank: true, uniqueness: true
