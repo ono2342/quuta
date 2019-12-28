@@ -18,7 +18,7 @@
             ユーザー名が設定されていません
         -else
           =link_to "",{class:"setting_userName"} do
-            ="@#{current_user.nickname} アカウント"
+            ="@#{current_user.nickname}"
         %span.setting_titleSeparator /
         %span.setting_title プロフィール
       =form_for @profile,url:setting_profile_path, html:{id:"edit_user", class:"simple_form edit_user"} do |f|

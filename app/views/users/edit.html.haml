@@ -18,11 +18,12 @@
             ユーザー名が設定されていません
         -else
           =link_to "",{class:"setting_userName"} do
-            ="@#{current_user.nickname} アカウント"
+            ="@#{current_user.nickname}"
         %span.setting_titleSeparator /
         %span.setting_title ユーザー設定
       =form_for @user,url:setting_account_path, html:{id:"edit_user", class:"simple_form edit_user"} do |f|
         .st-Form.icon
+          %label.st-Form_label アイコン
           = f.file_field :icon ,id:"lefile", style:"display:none"
           .icon_wrapper
             %input#photoCover.st-Form_text{placeholder:"（仮）10MBまでアップロードできます", type:"text"}
