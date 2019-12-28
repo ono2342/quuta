@@ -21,7 +21,9 @@ class ArticlesController < ApplicationController
     @article = Article.create(article_params)
   end
 
-  def show; end
+  def show
+    @article = Article.find(params[:id])
+  end
 
   private
 

@@ -16,52 +16,59 @@
             .it-Actions_commentCount 1
             .fa.fa-fw.fa-comment
           .SocialMediaShareButton.SocialMediaShareButton--twitter
-            %div
-              %svg.social-icon.social-icon--twitter{fill: "white", height: "32", viewbox: "0 0 64 64", width: "32"}
-                %g
-                  %circle{cx: "32", cy: "32", fill: "#00aced", r: "31"}
-                %g
-                  %path{d: "M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"}
+            =link_to "", target:"_blank", onclick:"window.open('http://twitter.com/share?url=#{request.url}&hashtags=Quuta,球太','subwin','width=500,height=500'); return false;" do
+              %div
+                %svg.social-icon.social-icon--twitter{fill: "white", height: "32", viewbox: "0 0 64 64", width: "32"}
+                  %g
+                    %circle{cx: "32", cy: "32", fill: "#00aced", r: "31"}
+                  %g
+                    %path{d: "M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"}
           .SocialMediaShareButton.SocialMediaShareButton--facebook{role: "button", style: "margin-top: 1.6rem;", tabindex: "0"}
-            %div{style: "width: 3.2rem; height: 3.2rem;"}
-              %svg.social-icon.social-icon--facebook{fill: "white", height: "32", viewbox: "0 0 64 64", width: "32"}
-                %g
-                  %circle{cx: "32", cy: "32", fill: "#3b5998", r: "31"}
-                %g
-                  %path{d: "M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z"}
+            =link_to "", onclick:"window.open('https://www.facebook.com/sharer/sharer.php?u=#{request.url}','subwin','width=500,height=500'); return false;" do
+              %div{style: "width: 3.2rem; height: 3.2rem;"}
+                %svg.social-icon.social-icon--facebook{fill: "white", height: "32", viewbox: "0 0 64 64", width: "32"}
+                  %g
+                    %circle{cx: "32", cy: "32", fill: "#3b5998", r: "31"}
+                  %g
+                    %path{d: "M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z"}
       .p-items_main
         .p-items_article
           .it-Header
             .u-flex-center-between.mb-3
               .it-Header_info
                 .it-Header_author
-                  %a{href:""}
-                    //ユーザーアイコンとリンク
-                    %img.it-Header_authorImage
-                  // ユーザーマイページのリンク
+                  =link_to "" do
+                    //ユーザーマイページのリンクを貼る
+                    - if @article.user.icon.present?
+                      =image_tag @article.user.icon.url, class:"it-Header_authorImage"
+                    - else 
+                      =image_tag "quutan.jpg", class:"it-Header_authorImage"
+                  //ユーザーマイページのリンクを貼る
                   %a.it-Header_authorName
                     ="@#{@article.user.nickname}"
                 .it-Header_time
                   =@article.updated_at.strftime("%Y年%m月%d日")
                   に更新
-                .it-Header_meta
-                  .it-Header_manipulate
-                    .it-Header_dropdown
-                      %a.it-Header_dropdownToggle{"aria-expanded":"false", "data-toggle":"dropdown", href:""}
-                        %span.fa.fa-ellipsis-h.fa-lg
-                      %ul.dropdown-menu.dropdown-menu-right
-                        %li.divider{role:"separator"}
-                        %li.dropdown__item
-                          %a{href:""}
-                            %span.fa.fa-fw.fa-thumbs-up
-                            いいねしたユーザー一覧
-                        %li.dropdown__item
-                          %a{href:""}
-                            %span.fa.fa-fw.fa-flag
-                            問題がある記事を報告する
-            %h1.it-Header_title タイトル
-            -# =@article.title
+                //記事のオプション（いいねしたユーザー一覧、通報機能）実装時に使用
+                -# .it-Header_meta
+                -#   .it-Header_manipulate
+                -#     .it-Header_dropdown
+                -#       %a.it-Header_dropdownToggle{"aria-expanded":"false", "data-toggle":"dropdown", href:""}
+                -#         %span.fa.fa-ellipsis-h.fa-lg
+                -#       %ul.dropdown-menu.dropdown-menu-right
+                -#         %li.divider{role:"separator"}
+                -#         %li.dropdown__item
+                -#           %a{href:""}
+                -#             %span.fa.fa-fw.fa-thumbs-up
+                -#             いいねしたユーザー一覧
+                -#         %li.dropdown__item
+                -#           %a{href:""}
+                -#             %span.fa.fa-fw.fa-flag
+                -#             問題がある記事を報告する
+            %h1.it-Header_title
+              =@article.title
             .it-Tags
+              //タグ実装時、活用
               %a.it-Tags_item{href:"/tags/chaosengineering"}
                 %span タグ
           %div{"data-mount-target":"mobileArticleActions"}
@@ -69,7 +76,7 @@
             #item-2245429ce96027e27949
               #content
                 #mdraw
-                  =@article.text
+                  = qiita_markdown(@article.text)
           %div{"data-mount-target": "articleFooterMenu"}
             .it-Footer
               .it-Footer_actions
@@ -84,50 +91,55 @@
                       %span いいね
                     %a.LikeButton__balloon{href: ""}  11
               .it-Footer_social
-                .SocialMediaShareButton.SocialMediaShareButton--twitter.it-Footer_shareButton.it-Footer_shareButton-twitter
-                  %div{style: "width: 3.2rem; height: 3.2rem;"}
-                    %svg.social-icon.social-icon--twitter{fill: "white", height: "32", viewbox: "0 0 64 64", width:"32"}
-                      %g
-                        %circle{cx: "32", cy: "32", fill: "#00aced", r: "31"}
-                      %g
-                        %path{d: "M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"}
-                .SocialMediaShareButton.SocialMediaShareButton--facebookit-Footer_shareButton.it-Footer_shareButton-facebook
-                  %div{style: "width: 3.2rem; height: 3.2rem;"}
-                    %svg.social-icon.social-icon--facebook{fill: "white", height: "32", viewbox: "0 0 64 64", width: "32"}
-                      %g
-                        %circle{cx: "32", cy: "32", fill: "#3b5998", r: "31"}
-                      %g
-                        %path{d: "M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z"}
-              .__react_component_tooltip.place-top.type-dark
+                =link_to "", onclick:"window.open('http://twitter.com/share?url=#{request.url}&hashtags=Quuta,球太','subwin','width=500,height=500'); return false;" do
+                  .SocialMediaShareButton.SocialMediaShareButton--twitter.it-Footer_shareButton.it-Footer_shareButton-twitter
+                    %div{style: "width: 3.2rem; height: 3.2rem;"}
+                      %svg.social-icon.social-icon--twitter{fill: "white", height: "32", viewbox: "0 0 64 64", width:"32"}
+                        %g
+                          %circle{cx: "32", cy: "32", fill: "#00aced", r: "31"}
+                        %g
+                          %path{d: "M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"}
+                =link_to "", onclick:"window.open('https://www.facebook.com/sharer/sharer.php?u=#{request.url}','subwin','width=500,height=500'); return false;" do
+                  .SocialMediaShareButton.SocialMediaShareButton--facebookit-Footer_shareButton.it-Footer_shareButton-facebook
+                    %div{style: "width: 3.2rem; height: 3.2rem;"}
+                      %svg.social-icon.social-icon--facebook{fill: "white", height: "32", viewbox: "0 0 64 64", width: "32"}
+                        %g
+                          %circle{cx: "32", cy: "32", fill: "#3b5998", r: "31"}
+                        %g
+                          %path{d: "M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z"}
           .ai-Container
             .ai-User
-              %a{href:""}
-                %img.ai-User_image{src:""}
-              .ai-User_body
-                .ai-User_header
-                  %a.ai-User_name{href: ""} MEI　SEI
-                  =link_to "@#{@article.user.nickname}", "",class:"ai-User_urlname"
-                .ai-User_description
-                  ユーザー説明
-                %a.ai-User_website{href: "http://d.hatena.ne.jp/mazinlabs"} ユーザーURL
-                .ai-User_footer
-                  %span.userFollowButton
-                    %button.btn.btn-default.btn-block.userFollowButton_inner.btn-xs
-                      %i.i.fa.fa-user-plus>
-                      フォロー
-                %script.js-react-on-rails-component
+              .ai-User_header
+                //マイページへのリンク
+                = link_to "" do
+                  -if @article.user.icon.present?
+                    =image_tag @article.user.icon.url, class:"ai-User_image"
+                  -else
+                    =image_tag "quutan.jpg", class:"ai-User_image"
+                .ai-User_name
+                  =link_to @article.user.profile.lastname + " " + @article.user.profile.firstname, ""
+                .ai-User_urlname
+                  =link_to "@#{@article.user.nickname}", ""
+              .ai-User_description
+                =@article.user.profile.description
+                // フォロー機能実装時使用
+                -# .ai-User_footer
+                -#   %span.userFollowButton
+                -#     %button.btn.btn-default.btn-block.userFollowButton_inner.btn-xs
+                -#       %i.i.fa.fa-user-plus>
+                -#       フォロー
       .p-items_options
-      .p-items_toc
-        .it-Toc
-          .it-Toc_nav
-            %ul
-              %li
-                %a{href: ""} 見出しごとのリンク
-                %ul
-                  %li
-                    %a{href: ""} 見出しごとのリンク
-              %li
-                %a{href: ""} 見出しごとのリンク
+      -# .p-items_toc
+      -#   .it-Toc
+      -#     .it-Toc_nav
+      -#       %ul
+      -#         %li
+      -#           %a{href: ""} 見出しごとのリンク
+      -#           %ul
+      -#             %li
+      -#               %a{href: ""} 見出しごとのリンク
+      -#         %li
+      -#           %a{href: ""} 見出しごとのリンク
   .p-items_container
     .p-items_leftDummy
     .p-items_main
@@ -146,7 +158,7 @@
         -#           リンクしてる記事
         -#         %span からリンク
         -#         %time.references_datetime.js-dateTimeView{:datetime => "2019-12-15T14:59:27+00:00"} 約14時間前
-        .p-items_aside.mt-5
+        -# .p-items_aside.mt-5
           -# コメント実装時、使用
           -# #comments.itemsShowComment_wrapper
           -#   #PublicCommentListContainer-react-component-3b26de0e-42d9-4a6c-94a5-69486093ba0a
@@ -249,6 +261,7 @@
 = render "shared/footer"
 
 
-:javascript
-  document.getElementById('content').innerHTML =
-    marked(document.getElementById("mdraw").innerHTML);
+%script{async: "", charset:"utf-8", src:"https://platform.twitter.com/widgets.js"}
+-# :javascript
+-#   document.getElementById('content').innerHTML =
+-#     marked(document.getElementById("mdraw").innerHTML);
