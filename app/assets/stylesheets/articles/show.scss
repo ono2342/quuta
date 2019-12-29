@@ -451,29 +451,35 @@
                 border: 0.1rem solid #ddd;
                 margin-right: 0.8rem;
               }
-            }
             .ai-User_description {
               font-size: 1.4rem;
               color: #777;
               margin-bottom: 0.4rem;
             }
+            }
             .ai-User_footer {
-              margin-top: 1.6rem;
+              margin: 1.6rem 0 0 auto;
               display: flex;
               align-items: center;
-              .it-UserFollowButton-follow {
-                background-color: #fff;
-              }
-              .it-UserFollowButton {
+                .userFollowButton {
                 display: inline-block;
                 -webkit-appearance: button;
-                border: 0.1rem solid #ccc;
-                border-radius: .1em;
-                font-size: 1.4rem;
-                padding: 0.4rem 0;
                 width: 12rem;
                 text-align: center;
+                margin:0 1.6rem 0 auto;
                 cursor: pointer;
+                .btn{
+                  font-size: 1.4rem;
+                  border: none;
+                }
+                .btn-default{
+                  border: 0.1rem solid ;
+                  border-color: #ccc;
+                }
+                .btn-primary{
+                  background-color: #F4AC5A;
+                }
+                
               }
             }
           }
