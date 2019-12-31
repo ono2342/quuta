@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,45 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_191_228_072_102) do
-  create_table 'articles', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
-    t.text 'text', null: false
-    t.bigint 'user_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'title', null: false
-    t.index ['title'], name: 'index_articles_on_title'
-    t.index ['user_id'], name: 'index_articles_on_user_id'
+ActiveRecord::Schema.define(version: 2019_12_23_042325) do
+
+  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title", null: false
+    t.index ["title"], name: "index_articles_on_title"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  create_table 'categories', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['name'], name: 'index_categories_on_name'
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name"
   end
 
-  create_table 'images', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
-    t.string 'image'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'profiles', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
-    t.bigint 'user_id'
-    t.string 'firstname'
-    t.string 'lastname'
-    t.string 'email_status'
-    t.string 'team'
-    t.string 'position'
-    t.string 'batting'
-    t.string 'throwing'
-    t.text 'description'
-    t.string 'twitter'
-    t.string 'facebook'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['user_id'], name: 'index_profiles_on_user_id'
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email_status"
+    t.string "team"
+    t.string "position"
+    t.string "batting"
+    t.string "throwing"
+    t.text "description"
+    t.string "twitter"
+    t.string "facebook"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table 'relations', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
