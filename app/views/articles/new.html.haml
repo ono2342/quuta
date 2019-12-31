@@ -1,13 +1,27 @@
-.container
-  %h1 新規投稿
-  %input{type: "file", id: 'image_file', name: 'images', value: 'image'}
-  = form_with model:@article, local: true do |f|
-    .form-group
-      = f.label :title
-      = f.text_field :title, class: 'form-control', id: 'article_title'
-    .form-group
-      #editor
-        = f.label :text
-        = f.text_area :text, rows: 5, class: 'form-control', id: 'article_text'
-        #marked-area
-      = f.submit nil, class: 'btn btn-success'
+= render "shared/header"
+.publicEditor
+  = form_with model:@article, local: true, class: "editor" do |f|
+    .editor_content
+      .editorTitle
+        = f.text_field :title, class: 'form-control form-control-lg', id: 'article_title', placeholder: 'タイトル'
+      .editorCategory
+        %input{type: "text", class: 'form-control', placeholder: '関連するタグをスペース区切りで５つまで入力'}
+      .editorBody-onUpdate
+        .editorMarkdown
+          .editorMarkdown_header
+            .header_text
+              本文
+            %label.far.fa-image
+              %input{type: "file", id: 'image_file', name: 'images', value: 'image'}
+          .editorMarkdown_panel
+            .Markdown_panel
+              = f.text_area :text, rows: 5, class: 'form-control', id: 'article_text', placeholder: '記事を書いて共有しよう'
+        .editorPreview
+          .editorPreview_header
+            .header_text
+              プレビュー
+          .editorPreview_panel
+            #marked-area
+      .editorFooter
+        .editorFooter_save
+          = f.submit 'Quuta に投稿', onclick: "submit();", type: "button", class: 'btn btn-success'
