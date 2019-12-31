@@ -120,15 +120,21 @@
                   =link_to @article.user.profile.lastname + " " + @article.user.profile.firstname, ""
                 .ai-User_urlname
                   =link_to "@#{@article.user.nickname}", ""
-              .ai-User_description
-                =@article.user.profile.description
+                .ai-User_description
+                  =@article.user.profile.description
                 // フォロー機能実装時使用
-                -# .ai-User_footer
-                -#   %span.userFollowButton
-                -#     %button.btn.btn-default.btn-block.userFollowButton_inner.btn-xs
-                -#       %i.i.fa.fa-user-plus>
-                -#       フォロー
-      .p-items_options
+              .ai-User_footer
+                -unless current_user.id == @article.user.id
+                  %span.userFollowButton{data:{id:"#{@article.user.id}"}}
+                    -if @relation.nil?
+                      %button.btn.btn-default.btn-block.userFollowButton_inner.btn-xs
+                        %i.i.fa.fa-user-plus
+                        フォロー
+                    -else
+                      %button.btn.btn-primary.btn-block.userUnfollowButton_inner.btn-xs
+                        フォロー中
+      //見出しごとのリンクを設定
+      -# .p-items_options
       -# .p-items_toc
       -#   .it-Toc
       -#     .it-Toc_nav

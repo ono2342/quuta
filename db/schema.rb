@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_191_223_042_325) do
+ActiveRecord::Schema.define(version: 20_191_228_072_102) do
   create_table 'articles', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
     t.text 'text', null: false
     t.bigint 'user_id'
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 20_191_223_042_325) do
     t.index ['user_id'], name: 'index_profiles_on_user_id'
   end
 
+  create_table 'relations', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.bigint 'user_id'
+    t.bigint 'follower_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['follower_id'], name: 'index_relations_on_follower_id'
+    t.index %w[user_id follower_id], name: 'index_relations_on_user_id_and_follower_id', unique: true
+    t.index ['user_id'], name: 'index_relations_on_user_id'
+  end
+
   create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
     t.string 'nickname'
     t.string 'email', default: '', null: false
@@ -72,4 +82,6 @@ ActiveRecord::Schema.define(version: 20_191_223_042_325) do
 
   add_foreign_key 'articles', 'users'
   add_foreign_key 'profiles', 'users'
+  add_foreign_key 'relations', 'users'
+  add_foreign_key 'relations', 'users', column: 'follower_id'
 end

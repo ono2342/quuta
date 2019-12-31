@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @relation = Relation.find_by(user: current_user, follower: params[:id])
   end
 
   private

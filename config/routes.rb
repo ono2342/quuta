@@ -19,9 +19,16 @@ Rails.application.routes.draw do
   end
   root 'homes#index'
 
+  # 公開マイページ
   get 'profile/:user_name', to: 'profiles#show'
+
+  # プロフィール、アカウント設定
   get 'setting/profile', to: 'profiles#edit'
   patch 'setting/profile', to: 'profiles#update'
   get 'setting/account', to: 'users#edit'
   patch 'setting/account', to: 'users#update'
+
+  # フォロー、解除
+  post 'relations/follow', to: 'relations#create'
+  post 'relations/unfollow', to: 'relations#delete'
 end
