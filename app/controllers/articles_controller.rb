@@ -22,7 +22,10 @@ class ArticlesController < ApplicationController
     redirect_to @article
   end
 
-  def show; end
+  def show
+    @article = Article.find(params[:id])
+    @relation = Relation.find_by(user: current_user, follower: params[:id])
+  end
 
   private
 

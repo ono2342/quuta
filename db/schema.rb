@@ -52,22 +52,35 @@ ActiveRecord::Schema.define(version: 2019_12_23_042325) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["nickname"], name: "index_users_on_nickname", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'relations', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.bigint 'user_id'
+    t.bigint 'follower_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['follower_id'], name: 'index_relations_on_follower_id'
+    t.index %w[user_id follower_id], name: 'index_relations_on_user_id_and_follower_id', unique: true
+    t.index ['user_id'], name: 'index_relations_on_user_id'
   end
 
-  add_foreign_key "articles", "users"
-  add_foreign_key "profiles", "users"
+  create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.string 'nickname'
+    t.string 'email', default: '', null: false
+    t.string 'icon'
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'provider'
+    t.string 'uid'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['nickname'], name: 'index_users_on_nickname', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  end
+
+  add_foreign_key 'articles', 'users'
+  add_foreign_key 'profiles', 'users'
+  add_foreign_key 'relations', 'users'
+  add_foreign_key 'relations', 'users', column: 'follower_id'
 end
