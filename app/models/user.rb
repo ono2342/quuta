@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :followings, through: :relations, source: :follower
   has_many :reverse_of_relations, class_name: 'Relation', foreign_key: 'follower_id'
   has_many :followers, through: :reverse_of_relations, source: :user
+  has_many :likes
 
   # バリデーション
   validates :nickname, presence: true, length: { maximum: 32 }, format: { with: /\A[-a-z]+\z/, message: 'は半角英字と「-」が使えます。' }, allow_blank: true, uniqueness: true
