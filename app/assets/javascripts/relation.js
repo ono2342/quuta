@@ -29,7 +29,8 @@ $(document).on("turbolinks:load", function() {
       changeUnfollow();
     })
     .fail(function(){
-      alert("フォローに失敗しました");
+      alert("ログインしてください");
+      window.location.href = "/login";
     })
   });
 
@@ -47,7 +48,8 @@ $(document).on("turbolinks:load", function() {
       changeFollow();
     })
     .fail(function(){
-      alert("解除に失敗しました");
+      alert("ログインしてください");
+      window.location.href = "/login";
     })
   });
 

@@ -32,7 +32,8 @@ $(document).on("turbolinks:load", function() {
       $(".likes-count").text(likes);
     })
     .fail(function(){
-      alert("いいねに失敗しました");
+      alert("ログインしてください");
+      window.location.href = "/login";
     })
   });
 
@@ -53,7 +54,8 @@ $(document).on("turbolinks:load", function() {
       $(".likes-count").text(likes);
     })
     .fail(function(){
-      alert("解除に失敗しました");
+      alert("ログインしてください");
+      window.location.href = "/login";
     })
   });
 
