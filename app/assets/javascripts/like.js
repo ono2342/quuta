@@ -24,12 +24,16 @@ $(document).on("turbolinks:load", function() {
       data: {article_id: articleId},
       dataType: "json",
     })
-    .done(function(i){ 
+    .done(function(i){
+      if(i["result"]!=false){
       changeLiked();
       var likes = $(".likes-count").data("like");
       likes += 1;
       $(".likes-count").data("like",likes);
       $(".likes-count").text(likes);
+    }else{
+      alert("あなたが投稿した記事です");
+    }
     })
     .fail(function(){
       alert("ログインしてください");

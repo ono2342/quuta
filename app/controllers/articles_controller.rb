@@ -27,6 +27,7 @@ class ArticlesController < ApplicationController
     @relation = Relation.find_by(user: current_user, follower: @article.user)
     @like = Like.find_by(user: current_user, article: params[:id])
     @likes = Like.where(article: params[:id])
+    @favorite = Favorite.find_by(user: current_user, article: params[:id])
   end
 
   private

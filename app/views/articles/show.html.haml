@@ -15,8 +15,12 @@
               %button.article-like-button
                 %i.fas.fa-baseball-ball
           .it-Actions_item.it-Actions_item-favorite
-            %button
-              %i.far.fa-star
+            -if @favorite.present?
+              %button.article-unfavorite-button
+                %i.fas.fa-star
+            -else
+              %button.article-favorite-button
+                %i.fas.fa-star
           .it-Actions_jumpToCommentButton
             .it-Actions_commentCount 1
             .fa.fa-fw.fa-comment
@@ -86,9 +90,14 @@
             .it-Footer
               .it-Footer_actions
                 .it-Footer_favorite
-                  %button
-                    %span.far.fa-star
-                    %span.it-Footer_favoriteLabel お気に入り
+                  -if @favorite.present?
+                    %button.article-unfavorite-button
+                      %span.fas.fa-star
+                      %span.it-Footer_favoriteLabel.article-favorite-button-text お気に入り済み
+                  -else
+                    %button.article-favorite-button
+                      %span.fas.fa-star
+                      %span.it-Footer_favoriteLabel.article-favorite-button-text お気に入り
                 .it-Footer_like
                   .LikeButton
                     -if @like.present?
@@ -138,15 +147,16 @@
                     =@article.user.profile.description
                 // フォロー機能実装時使用
               .ai-User_footer
-                -# -unless current_user.id == @article.user.id
-                %span.userFollowButton{data:{id:"#{@article.user.id}"}}
-                  -if @relation.nil?
-                    %button.btn.btn-default.btn-block.userFollowButton_inner.btn-xs
-                      %i.i.fa.fa-user-plus
-                      フォロー
-                  -else
-                    %button.btn.btn-primary.btn-block.userUnfollowButton_inner.btn-xs
-                      フォロー中
+                -if user_signed_in?
+                  -unless current_user.id == @article.user.id
+                    %span.userFollowButton{data:{id:"#{@article.user.id}"}}
+                      -if @relation.nil?
+                        %button.btn.btn-default.btn-block.userFollowButton_inner.btn-xs
+                          %i.i.fa.fa-user-plus
+                          フォロー
+                      -else
+                        %button.btn.btn-primary.btn-block.userUnfollowButton_inner.btn-xs
+                          フォロー中
       //見出しごとのリンクを設定
       -# .articles_options
       -# .articles_toc
