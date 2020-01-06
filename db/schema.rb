@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_191_231_100_841) do
+ActiveRecord::Schema.define(version: 20_200_106_060_433) do
   create_table 'articles', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
     t.text 'text', null: false
     t.bigint 'user_id'
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20_191_231_100_841) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['name'], name: 'index_categories_on_name'
+  end
+
+  create_table 'favorites', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.bigint 'user_id'
+    t.bigint 'article_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['article_id'], name: 'index_favorites_on_article_id'
+    t.index %w[user_id article_id], name: 'index_favorites_on_user_id_and_article_id', unique: true
+    t.index ['user_id'], name: 'index_favorites_on_user_id'
   end
 
   create_table 'images', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
@@ -91,6 +101,8 @@ ActiveRecord::Schema.define(version: 20_191_231_100_841) do
   end
 
   add_foreign_key 'articles', 'users'
+  add_foreign_key 'favorites', 'articles'
+  add_foreign_key 'favorites', 'users'
   add_foreign_key 'likes', 'articles'
   add_foreign_key 'likes', 'users'
   add_foreign_key 'profiles', 'users'

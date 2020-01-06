@@ -35,4 +35,8 @@ Rails.application.routes.draw do
   # いいね
   post 'likes/like', to: 'likes#create'
   post 'likes/unlike', to: 'likes#delete'
+
+  # お気に入り
+  post 'favorites/favorite', to: 'favorites#create'
+  post 'favorites/unfavorite', to: 'favorites#delete'
 end

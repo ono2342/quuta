@@ -24,15 +24,20 @@ $(document).on("turbolinks:load", function() {
       data: {article_id: articleId},
       dataType: "json",
     })
-    .done(function(i){ 
+    .done(function(i){
+      if(i["result"]!=false){
       changeLiked();
       var likes = $(".likes-count").data("like");
       likes += 1;
       $(".likes-count").data("like",likes);
       $(".likes-count").text(likes);
+    }else{
+      alert("あなたが投稿した記事です");
+    }
     })
     .fail(function(){
-      alert("いいねに失敗しました");
+      alert("ログインしてください");
+      window.location.href = "/login";
     })
   });
 
@@ -53,7 +58,8 @@ $(document).on("turbolinks:load", function() {
       $(".likes-count").text(likes);
     })
     .fail(function(){
-      alert("解除に失敗しました");
+      alert("ログインしてください");
+      window.location.href = "/login";
     })
   });
 

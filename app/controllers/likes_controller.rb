@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 class LikesController < ApplicationController
+  before_action :authenticate_user!
   def create
     @article = Article.find(params[:article_id])
     if current_user != @article.user
       Like.create(user: current_user, article: @article)
+    else
+      @result = false
     end
   end
 
