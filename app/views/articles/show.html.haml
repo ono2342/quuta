@@ -1,14 +1,19 @@
 = render "shared/header"
 
-%article.p-items.logged-in
-  .p-items_wrapper
-    .p-items_container
-      .p-items_stickyMenu.it-Actions
+%article.articles{data:{id:@article.id}}
+  .articles_wrapper
+    .articles_container
+      .articles_stickyMenu.it-Actions
         %div
-          .it-Actions_item.it-Actions_item-like.likable
-            %a.it-Actions_likeCount 11
-            %button
-              %i.fa.fa-fw.fa-thumbs-up
+          .it-Actions_item.it-Actions_item-like
+            .it-Actions_likeCount.likes-count{data:{like:@likes.count}}
+              =@likes.count
+            - if @like.present?
+              %button.article-unlike-button
+                %i.fas.fa-baseball-ball
+            - else
+              %button.article-like-button
+                %i.fas.fa-baseball-ball
           .it-Actions_item.it-Actions_item-favorite
             %button
               %i.far.fa-star
@@ -31,8 +36,8 @@
                     %circle{cx: "32", cy: "32", fill: "#3b5998", r: "31"}
                   %g
                     %path{d: "M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z"}
-      .p-items_main
-        .p-items_article
+      .articles_main
+        .articles_article
           .it-Header
             .u-flex-center-between.mb-3
               .it-Header_info
@@ -86,10 +91,17 @@
                     %span.it-Footer_favoriteLabel お気に入り
                 .it-Footer_like
                   .LikeButton
-                    %button.p-button
-                      %i.fa.fa-fw.fa-thumbs-up
-                      %span いいね
-                    %a.LikeButton__balloon{href: ""}  11
+                    -if @like.present?
+                      %button.p-button.article-unlike-button
+                        %i.fas.fa-baseball-ball
+                        %span.article-like-button-text いいね済み
+                    -else 
+                      %button.p-button.article-like-button
+                        %i.fas.fa-baseball-ball
+                        %span.article-like-button-text いいね
+                    // 本家ではいいねしたユーザー一覧ページに飛ぶ
+                    .LikeButton__balloon.likes-count
+                      = @likes.count
               .it-Footer_social
                 =link_to "", onclick:"window.open('http://twitter.com/share?url=#{request.url}&hashtags=Quuta,球太','subwin','width=500,height=500'); return false;" do
                   .SocialMediaShareButton.SocialMediaShareButton--twitter.it-Footer_shareButton.it-Footer_shareButton-twitter
@@ -116,12 +128,14 @@
                     =image_tag @article.user.icon.url, class:"ai-User_image"
                   -else
                     =image_tag "quutan.jpg", class:"ai-User_image"
-                .ai-User_name
-                  =link_to @article.user.profile.lastname + " " + @article.user.profile.firstname, ""
+                - if @article.user.profile.lastname.present? && @article.user.profile.firstname.present?
+                  .ai-User_name
+                    =link_to @article.user.profile.lastname + " " + @article.user.profile.firstname, ""
                 .ai-User_urlname
                   =link_to "@#{@article.user.nickname}", ""
-                .ai-User_description
-                  =@article.user.profile.description
+                - if @article.user.profile.description.present?
+                  .ai-User_description
+                    =@article.user.profile.description
                 // フォロー機能実装時使用
               .ai-User_footer
                 -unless current_user.id == @article.user.id
@@ -134,8 +148,8 @@
                       %button.btn.btn-primary.btn-block.userUnfollowButton_inner.btn-xs
                         フォロー中
       //見出しごとのリンクを設定
-      -# .p-items_options
-      -# .p-items_toc
+      -# .articles_options
+      -# .articles_toc
       -#   .it-Toc
       -#     .it-Toc_nav
       -#       %ul
@@ -146,14 +160,14 @@
       -#               %a{href: ""} 見出しごとのリンク
       -#         %li
       -#           %a{href: ""} 見出しごとのリンク
-  .p-items_container
-    .p-items_leftDummy
-    .p-items_main
-      .p-items_aside.mt-5
+  .articles_container
+    .articles_leftDummy
+    .articles_main
+      .articles_aside.mt-5
         -# 被リンク記事表示の際、使用
         -# #logly-lift-4279494
-        -# .p-items_aside.mt-4
-        -#   .p-items_footnote
+        -# .articles_aside.mt-4
+        -#   .articles_footnote
         -#     %ul.references.js-referencesView.mt-5
         -#       %li.references_header
         -#         %i.fa.fa-fw.fa-link
@@ -164,7 +178,7 @@
         -#           リンクしてる記事
         -#         %span からリンク
         -#         %time.references_datetime.js-dateTimeView{:datetime => "2019-12-15T14:59:27+00:00"} 約14時間前
-        -# .p-items_aside.mt-5
+        -# .articles_aside.mt-5
           -# コメント実装時、使用
           -# #comments.itemsShowComment_wrapper
           -#   #PublicCommentListContainer-react-component-3b26de0e-42d9-4a6c-94a5-69486093ba0a
@@ -263,7 +277,7 @@
           -#               %i.fa.fa-info-circle.commentForm_imageUploader-info{"data-original-title" => "今月アップロード可能な画像の残り容量です", "data-placement" => "top", "data-toggle" => "tooltip", :title => ""}
           -#             .commentForm_btns
           -#               %button.btn.btn-primary.btn-sm 投稿
-      .p-items_rightDummy
+      .articles_rightDummy
 = render "shared/footer"
 
 

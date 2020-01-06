@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Article < ApplicationRecord
+class Like < ApplicationRecord
   belongs_to :user
-  has_many :likes
+  belongs_to :article
 end

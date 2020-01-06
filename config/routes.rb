@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   # フォロー、解除
   post 'relations/follow', to: 'relations#create'
   post 'relations/unfollow', to: 'relations#delete'
+
+  # いいね
+  post 'likes/like', to: 'likes#create'
+  post 'likes/unlike', to: 'likes#delete'
 end
