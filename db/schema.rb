@@ -80,6 +80,9 @@ ActiveRecord::Schema.define(version: 2020_01_06_060433) do
     t.index ["follower_id"], name: "index_relations_on_follower_id"
     t.index ["user_id", "follower_id"], name: "index_relations_on_user_id_and_follower_id", unique: true
     t.index ["user_id"], name: "index_relations_on_user_id"
+  create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
