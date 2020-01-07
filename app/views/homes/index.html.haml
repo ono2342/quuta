@@ -1,8 +1,44 @@
 = render "shared/header"
-      
+
 = link_to "logout","/signout",{method: :delete}
 - if user_signed_in?
   = current_user.nickname
   = current_user.email
-test
+- else
+  .nl-Hero
+    .nl-Hero_inner
+      .nl-Hero_start
+        %h1.mb-4.nl-Hero_title How developers code is here.
+        %p.nl-Hero_lead 
+          Qiitaは、エンジニアリングに関する知識を記録・共有するためのサービスです。コードを書いていて気づいたことや、自分がハマったあの仕様について、他のエンジニアと知見を共有しましょう ;)
+      .nl-Hero_end
+        .nl-SocialSignupWrapper
+          =link_to user_twitter_omniauth_authorize_path ,class:"nl-SocialSignup nl-SocialSignup-twitter" do
+            %i.fab.fa-twitter.fa-fw
+            Twitter
+          =link_to user_google_oauth2_omniauth_authorize_path ,class:"nl-SocialSignup nl-SocialSignup-google" do
+            %i.fab.fa-google.fa-fw
+            Google
+          =link_to user_facebook_omniauth_authorize_path ,class:"nl-SocialSignup nl-SocialSignup-facebook" do
+            %i.fab.fa-facebook.fa-fw
+            Facebook
+        .nl-Hero_separator OR
+        .nl-SignupForm
+          =form_for @user, url: signup_path, method: :post do |f|
+            .mb-4.nl-SignupForm_group
+              %label.nl-SignupForm_label{for: "url_name"} ユーザ名
+              = f.text_field :nickname, class:"form-control", id:"url_name", placeholder:"ユーザ名", required:"required"
+            .mb-4.nl-SignupForm_group
+              %label.nl-SignupForm_label{for: "email"} メールアドレス
+              = f.email_field :email, class:"form-control", id:"email", placeholder:"メールアドレス", required:"required"
+            .mb-3.nl-SignupForm_group
+              %label.nl-SignupForm_label{for: "password"} パスワード
+              = f.password_field :password, class:"form-control", id:"password", placeholder:"********", required:"required"
+            %span.mb-4.nl-SignupForm_helpText パスワードは8文字以上32文字以内で、半角英字・数字・記号が使えます。
+            .nl-SignupForm_recaptcha
+              = recaptcha_tags
+            .nl-SignupForm_buttonArea
+              .nl-SignupForm_button
+                = f.submit class:"btn btn-primary btn-block btn-lg", "data-disable-with": "送信中……", value:"登録する"
+
 = render "shared/footer"
