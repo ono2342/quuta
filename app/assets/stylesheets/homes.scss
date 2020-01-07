@@ -1,3 +1,142 @@
-// Place all the styles related to the homes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.nl-Hero {
+  width: 100%;
+  padding: 3.2rem;
+  background-color: #55c500;
+  display: flex;
+  align-items: center;
+  .nl-Hero_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 110rem;
+    margin: 0 auto;
+    .nl-Hero_start {
+      .nl-Hero_title {
+        font-size: 4.8rem;
+        font-weight: 700;
+        font-feature-settings: "palt";
+        color: #fff;
+      }
+      .nl-Hero_lead {
+        width: 83%;
+        font-size: 1.6rem;
+        font-feature-settings: "pwid";
+        line-height: 2;
+        color: #fff;
+      }
+    }
+    .nl-Hero_end {
+      min-width: 30.5rem;
+      .nl-SocialSignupWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        a {
+          text-decoration: none;
+        }
+        .nl-SocialSignup {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.4rem;
+          background-color: #fff;
+          border-radius: 0.4rem;
+          height: 4rem;
+          color: inherit;
+          transition: background-color .08s ease-in-out;
+          width: 30%;
+          .fab {
+            margin-right: 0.1rem;
+            font-size: 1.6rem;
+          }
+          .fa-twitter {
+            color: #55acee;;
+          }
+          .fa-google {
+            color: #c6594b;;
+          }
+          .fa-facebook {
+            color: #3b5998;
+          }
+        }
+      }
+      .nl-Hero_separator {
+        font-size: 1.3rem;
+        color: rgba(255,255,255,.6);
+        text-align: center;
+        margin: 0.8rem 0;
+      }
+      .nl-SignupForm {
+        display: flex;
+        flex-direction: column;
+        .nl-SignupForm_group {
+          display: flex;
+          align-items: center;
+          margin-left: -10rem;
+          .nl-SignupForm_label {
+            display: block;
+            font-size: 1.2rem;
+            color: #fff;
+            min-width: 10rem;
+            text-align: right;
+            padding-right: 1rem;
+            margin-bottom: 0;
+          }
+          .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            box-shadow: inset 0 0.1rem 0.2rem #ccc;
+            border: 0;
+            font-size: 1.4rem;
+            height: 4rem;
+            border-radius: 0.4rem;
+          }
+        }
+        .nl-SignupForm_helpText {
+          display: block;
+          color: #fff;
+          font-size: 1rem;
+        }
+        .nl-SignupForm_recaptcha {
+          margin-bottom: 1.6rem;
+        }
+        .nl-SignupForm_buttonArea {
+          display: flex;
+          align-items: center;
+          .nl-SignupForm_button {
+            margin-right: 1.6rem;
+            .btn {
+              display: inline-block;
+              text-align: center;
+              width: 12rem;
+              height: 4rem;
+              background-color: transparent;
+              border: 0.2rem solid #fff;
+              border-radius: 0.4rem;
+              padding: 0.8rem;
+              font-size: 1.4rem;
+              cursor: pointer;
+              color: #fff;
+              transition: background-color .08s ease-in-out;
+            }
+          }
+        }
+        @media screen and (max-width: 40rem) {
+          .nl-SignupForm_group{
+            display:block;
+            margin-left: 0;
+            .nl-SignupForm_label {
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 40rem) {
+    .nl-Hero_inner{
+    display:block;
+    }
+  }
+}
