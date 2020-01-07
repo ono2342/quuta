@@ -157,7 +157,7 @@
                 .it-Header_authorImage {
                   display: flex;
                   overflow: hidden;
-                  border-radius: .2em;
+                  border-radius: 0.5rem;
                   width: 3.2rem;
                   height: 3.2rem;
                   margin-right: 0.8rem;
@@ -459,7 +459,7 @@
             word-wrap: break-word;
             .ai-User_image {
               overflow: hidden;
-              border-radius: .2em;
+              border-radius: 1rem;
               width: 6rem;
               height: 6rem;
               margin-right: 1.6rem;
@@ -494,7 +494,8 @@
             .ai-User_description {
               font-size: 1.4rem;
               color: #777;
-              margin-bottom: 0.4rem;
+              margin: 0.4rem 0;
+
             }
             }
             .ai-User_footer {
@@ -502,12 +503,12 @@
               display: flex;
               align-items: center;
                 .userFollowButton {
-                display: inline-block;
-                -webkit-appearance: button;
-                width: 12rem;
-                text-align: center;
-                margin:0 1.6rem 0 auto;
-                cursor: pointer;
+                  display: inline-block;
+                  -webkit-appearance: button;
+                  width: 12rem;
+                  text-align: center;
+                  margin:0 1.6rem 0 auto;
+                  cursor: pointer;
                 .btn{
                   font-size: 1.4rem;
                   border: none;

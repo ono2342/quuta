@@ -23,7 +23,12 @@ Rails.application.routes.draw do
   root 'homes#index'
 
   # 公開マイページ
-  get 'profile/:user_name', to: 'profiles#show'
+  get 'profile/:user_name/posts', to: 'profiles#show'
+  get 'profile/:user_name/likes', to: 'profiles#show'
+  get 'profile/:user_name/comments', to: 'profiles#show'
+  get 'profile/:user_name/follows', to: 'profiles#show'
+  get 'profile/:user_name/followers', to: 'profiles#show'
+
 
   # プロフィール、アカウント設定
   get 'setting/profile', to: 'profiles#edit'

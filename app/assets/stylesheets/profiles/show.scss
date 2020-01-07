@@ -1,0 +1,191 @@
+.profile-main{
+  padding: 2.4rem 1rem 4rem;
+  width: 100%;
+  .profile-userprofile{
+    display:flex;
+    .userprofile-left{
+      width: 15rem;
+      .profile-icon{
+        img{
+          width:100%;
+          border-radius:1rem;
+        }
+      }
+    }
+    .userprofile-right{
+      width: 80%;
+      padding-left: 1rem;
+      font-size: 1.2rem;
+      .prodile-name-follow-wrapper{
+        display: flex;
+        .profile-namearea{
+          display: flex;
+          margin-right: 1rem;
+          .profile-name{
+            font-size: 1.8rem;
+            font-weight: 600;
+          }
+          .profile-nickname{
+            margin-left: 1rem;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #999;
+          }
+        }
+        .profile-followsns-area{
+          margin:0 1.6rem 0 auto;
+          display: flex;
+          margin-bottom: 1rem;
+          .profile-twitter{
+            font-size: 2rem;
+            color: #1DA1F2;
+            margin-right: 1rem;
+          }
+          .profile-facebook{
+            font-size: 2rem;
+            color: #3B5998;
+            margin-right: 1rem;
+          }
+          .userFollowButton {
+            display: inline-block;
+            width: 10rem;
+            text-align: center;
+            cursor: pointer;
+            .btn-block{
+              font-size: 1.2rem;
+            }
+            .userFollowButton_inner{
+            }
+            .userUnfollowButton_inner{
+              background-color: #F4AC5A;
+            }
+          }
+        }
+      }
+      .profile-description{
+        border-top: 1px solid #eee;
+      }
+      .profile-email{
+        border-top: 1px solid #eee;
+        font-size: 1.4rem;
+      }
+      .profile-team-position-area{
+        display: flex;
+        border-top: 1px solid #eee;
+        font-size: 1.4rem;
+        .profile-team{
+        }
+        .profile-position{
+        }
+      }
+      .profile-setting{
+        text-align: right;
+        .profile-setting-link{
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+  .profile-content-wrapper{
+    display: flex;
+    .profile-sidebar{
+      position: -webkit-sticky;
+      position: sticky;
+      top: 10vh;
+      will-change: transform;
+      margin-top: 3rem;
+      width: 15rem;
+      .menu{
+        padding: 0 0 1rem 0;
+        list-style: none;
+        font-size: 1.6rem;
+        &__item{
+          &--link{
+            color: #337ab7;
+          }
+        }
+      }
+    }
+    .profile-content{
+      min-height: 40rem;
+      margin-top: 3rem;
+      margin-right: 3rem;
+      padding-left: 1rem;
+      width: 85%;
+      .profile-content-title{
+        font-size: 1.8rem;
+        border-bottom: 1px solid #eee;
+        font-weight: 600
+      }
+      .profile-article-wrapper{
+        border-bottom: 1px solid #eee;
+        .profile-article{
+          margin: 0.5rem 0;
+          display: flex;
+          .profile-article-icon{
+            img{
+            border-radius:1rem;
+            width: 6rem;  
+            }
+          }
+          .profile-article-detail{
+            display: flex;
+            width: 100%;
+            .profile-article-title{
+              font-size: 1.6rem;
+              margin-left: 2rem;
+              width: 85%;
+              a{
+                color: #337ab7;
+              }
+              .profile-article-favoritedate-area{
+                display: flex;
+                margin-top: 1rem;
+                .profile-article-favorited{
+                  font-size: 1.4rem;
+                  background-color: #F4AC5A;
+                  border: 0.2rem solid #F4AC5A;
+                  color:#FFFF01;
+                  border-radius: 0.3rem;
+                  cursor: pointer;
+                }
+                .profile-article-favorite{
+                  font-size: 1.4rem;
+                  background-color: #777;
+                  border: 0.2rem solid #777;
+                  color:#FFF;
+                  border-radius: 0.3rem;
+                  cursor: pointer;
+                }
+                .profile-article-date{
+                  font-size: 1.4rem;
+                  margin-left: 1rem;
+                }
+              }
+            }
+            .profile-article-likes{
+              margin: 0 2rem 0 auto;
+              line-height: 6rem;
+              font-size: 1.6rem;
+              color: #F4AC5A;
+              width: 4rem;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+// .profile-content
+//   .profile-content-title
+//     投稿した記事
+//     -@user.articles.each do|article|
+//       .profile-article
+//         .profile-article-title
+//           =article.title
+//         .profile-article-date
+//           =link_to @user.nickname, "/profile/#{@user.nickname}"
+//           ="が"+article.created_at.strftime("%Y年%m月%d日")+"に投稿"
+//         .profile-article-likes
+//           =article.likes.count

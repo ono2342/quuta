@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relations, source: :user
   has_many :likes
   has_many :comments
+  has_many :favorites
 
   # バリデーション
   validates :nickname, presence: true, length: { maximum: 32 }, format: { with: /\A[-a-z]+\z/, message: 'は半角英字と「-」が使えます。' }, allow_blank: true, uniqueness: true
