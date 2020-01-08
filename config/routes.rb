@@ -39,4 +39,8 @@ Rails.application.routes.draw do
   # お気に入り
   post 'favorites/favorite', to: 'favorites#create'
   post 'favorites/unfavorite', to: 'favorites#delete'
+
+  get  'inquiry',            to: 'inquiry#index'       # 入力画面
+  post 'inquiry/confirm',    to: 'inquiry#confirm'     # 確認画面
+  post 'inquiry/complete',   to: 'inquiry#complete'    # 送信完了画面
 end
