@@ -66,6 +66,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "quuta_#{Rails.env}"
 
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = {host: 'http://18.177.164.39/'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     port:                 587,
