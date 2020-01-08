@@ -1,26 +1,29 @@
 = render "shared/header"
 
-= form_for @inquiry, :url => inquiry_confirm_path do |f|
-  .page-header
-    %h1 お問い合わせ
-  - if @inquiry.errors.any?
-    .alert.alert-danger{:role => "alert"}
-      %strong 入力内容にエラーがあります
-      %ul
-        - @inquiry.errors.each do |attr, msg|
-          %li= msg
-  %table.table
-    %tr
-      %th
-        名前
-        %span.text-danger （必須）
-      %td= f.text_field :name
-    %tr
-      %th
-        メールアドレス
-        %span.text-danger （必須）
-      %td= f.text_field :email
-    %tr
-      %th お問い合わせ内容
-      %td= f.text_area :message
-  = f.submit '確認', class: 'btn btn-primary'
+.inquiry-form
+  = form_for @inquiry, :url => inquiry_confirm_path do |f|
+    .page-header
+      %h1 お問い合わせ
+    - if @inquiry.errors.any?
+      .alert.alert-danger{:role => "alert"}
+        %strong 入力内容にエラーがあります
+        %ul
+          - @inquiry.errors.each do |attr, msg|
+            %li= msg
+    %table.table
+      %tr
+        %th
+          名前
+          %span.text-danger （必須）
+        %td= f.text_field :name
+      %tr
+        %th
+          メールアドレス
+          %span.text-danger （必須）
+        %td= f.text_field :email
+      %tr
+        %th お問い合わせ内容
+        %td= f.text_area :message
+    = f.submit '確認', class: 'btn btn-primary'
+
+= render "shared/footer"
