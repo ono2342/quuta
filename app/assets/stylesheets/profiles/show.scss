@@ -4,10 +4,10 @@
   .profile-userprofile{
     display:flex;
     .userprofile-left{
-      width: 15rem;
       .profile-icon{
         img{
-          width:100%;
+          width: 15rem;
+          height: 15rem;
           border-radius:1rem;
         }
       }
@@ -108,10 +108,9 @@
     }
     .profile-content{
       min-height: 40rem;
-      margin-top: 3rem;
-      margin-right: 3rem;
+      margin:3rem auto 1rem;
       padding-left: 1rem;
-      width: 85%;
+      width: 75%;
       .profile-content-title{
         font-size: 1.8rem;
         border-bottom: 1px solid #eee;
@@ -120,12 +119,13 @@
       .profile-article-wrapper{
         border-bottom: 1px solid #eee;
         .profile-article{
-          margin: 0.5rem 0;
+          margin: 1.5rem 0;
           display: flex;
           .profile-article-icon{
             img{
             border-radius:1rem;
-            width: 6rem;  
+            width: 6rem;
+            height: 6rem;
             }
           }
           .profile-article-detail{
@@ -173,8 +173,19 @@
           }
         }
       }
+      nav{
+        .pagination{
+          // display: inline;
+          padding-left: 0;
+          margin:4rem auto;
+          border-radius: 3px;
+          width: 5rem;
+          a{
+            font-size: 1.4rem;
+          }
+        }
+      }
     }
-
   }
 }
 // .profile-content

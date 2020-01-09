@@ -17,9 +17,22 @@ class ProfilesController < ApplicationController
     @favorite.each do |favorite|
       @favorites << favorite.article_id
     end
-    @request = request.path.match(/\/profile\/testtest\/(.+)/)[1]
+    @articles = Article.where(user:@user)
+    @articles = Article.page(params[:page]).per(15).order(created_at: "DESC")
   end
 
+  def likes
+  end
+
+  def comments
+  end
+
+  def follows 
+  end
+
+  def followers
+  end
+  
   def edit
     @email = if current_user.email.include?('twitter@example.com')
                nil

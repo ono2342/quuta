@@ -3,7 +3,10 @@
   .profile-userprofile
     .userprofile-left
       .profile-icon
-        =image_tag @user.icon.url
+        -if @user.icon.present?
+          =image_tag @user.icon.url
+        -else 
+          =image_tag "quutan.jpg"
     .userprofile-right
       .prodile-name-follow-wrapper
         .profile-namearea
@@ -65,6 +68,35 @@
             = link_to link, class:'menu__item--link',data: { turbolinks: false} do
               = menu
     .profile-content
-      // パスに応じて部分テンプレート
-      = render "#{@request}"
+      .profile-content-posts
+        .profile-content-title
+          投稿した記事
+        -@articles.each do|article|
+          .profile-article-wrapper
+            .profile-article
+              .profile-article-icon
+                =link_to "/profile/#{@user.nickname}" do
+                  -if article.user.icon.present?
+                    =image_tag article.user.icon.url
+                  -else
+                    =image_tag "quutan.jpg"
+              .profile-article-detail
+                .profile-article-title
+                  =link_to "/articles/#{article.id}" do
+                    =article.title
+                  .profile-article-favoritedate-area
+                    - if @favorites.include?(article.id)
+                      .profile-article-favorited{data:{id:article.id}}
+                        %i.fas.fa-star
+                    - else
+                      .profile-article-favorite{data:{id:article.id}}
+                        %i.fas.fa-star
+                    .profile-article-date
+                      =link_to @user.nickname, "/profile/#{@user.nickname}"
+                      ="が"+article.created_at.strftime("%Y年%m月%d日")+"に投稿"
+                .profile-article-likes
+                  %i.fas.fa-baseball-ball
+                    =article.likes.count
+      .profile-pagination
+        =paginate @articles
 = render "shared/footer"

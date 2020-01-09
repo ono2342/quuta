@@ -24,10 +24,10 @@ Rails.application.routes.draw do
 
   # 公開マイページ
   get 'profile/:user_name/posts', to: 'profiles#show'
-  get 'profile/:user_name/likes', to: 'profiles#show'
-  get 'profile/:user_name/comments', to: 'profiles#show'
-  get 'profile/:user_name/follows', to: 'profiles#show'
-  get 'profile/:user_name/followers', to: 'profiles#show'
+  get 'profile/:user_name/likes', to: 'profiles#likes'
+  get 'profile/:user_name/comments', to: 'profiles#comments'
+  get 'profile/:user_name/follows', to: 'profiles#follows'
+  get 'profile/:user_name/followers', to: 'profiles#followers'
 
 
   # プロフィール、アカウント設定
