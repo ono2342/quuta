@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       post 'image'     # 画像ドラッグドロップの処理
       post 'image2'    # 画像選択の処理
     end
+    member do
+      post 'comment'
+    end
   end
   root 'homes#index'
 

@@ -65,16 +65,15 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "quuta_#{Rails.env}"
 
-  
-  config.action_mailer.default_url_options = {host: 'http://18.177.164.39/'}
+  config.action_mailer.default_url_options = { host: 'http://18.177.164.39/' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    port:                 587,
-    address:              'smtp.gmail.com',
-    domain:               'gmail.com',
-    user_name:            Rails.application.credentials.EMAIL_ADDRESS,
-    password:             Rails.application.credentials.EMAIL_PASSWORD,
-    authentication:       'login',
+    port: 587,
+    address: 'smtp.gmail.com',
+    domain: 'gmail.com',
+    user_name: Rails.application.credentials.EMAIL_ADDRESS,
+    password: Rails.application.credentials.EMAIL_PASSWORD,
+    authentication: 'login',
     enable_starttls_auto: true
   }
 

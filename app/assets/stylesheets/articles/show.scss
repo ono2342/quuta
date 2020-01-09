@@ -590,6 +590,190 @@
   .p-button:focus{
     outline:0;
   }
+  .commentList {
+    .comment {
+      .commentHeader {
+        display: flex;
+        .commentHeader_creator {
+          display: flex;
+          .commentHeader_creatorIcon {
+            img {
+              width: 4rem;
+              height: 4rem;
+              border-radius: 0.3rem;
+            }
+          }
+          .commentHeader_creatorInfo {
+            margin-left: 1rem;
+            .commentHeader_publicUrlName {
+              display: block;
+              font-size: 2.4rem;
+              font-weight: 700;
+              line-height: 1.5rem;
+            }
+          }
+        }
+        .commentHeader_metadata {
+          width: 100%;
+          .text-right {
+            padding-top: 2.3rem;
+            font-size: 1.2rem;
+          }
+        }
+      }
+      .comment_content {
+        border-radius: 0.3rem;
+        position: relative;
+        background-color: #fff;
+        border: solid 0.1rem #ccc;
+        padding: 1.8rem 3.2rem;
+        margin-top: 1.1rem;
+        margin-bottom: 2rem;
+        .it-MdContent {
+          font-size: 1.8rem;
+          color: #333;
+          word-wrap: break-word;
+          word-break: break-all;
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .comment_content:before {
+        bottom: 100%;
+        left: 1.3rem;
+        border: solid transparent;
+        border-bottom: 0.5rem solid #ccc;
+        border-width: 0.7rem;
+      }
+      .comment_content:before, .comment_content:after {
+        position: absolute;
+        content: '';
+      }
+      .comment_content:after {
+        bottom: 100%;
+        left: 1.4rem;
+        border: solid transparent;
+        border-bottom: 0.4rem solid #fff;
+        border-width: 0.6rem;
+      }
+    }
+    .commentForm {
+      margin-bottom: 2rem;
+      .commentForm_header {
+        margin-bottom: 1rem;
+        img {
+          width: 4rem;
+          height: 4rem;
+          border-radius: 0.3rem;
+        }
+        .commentForm_headerLabel {
+          display: inline-block;
+          text-align:center;
+          line-height: 3.6rem;
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin-top: 0;
+          margin-left: 1rem;
+        }
+      }
+      .commentForm_contentHeader {
+        border-top-right-radius: 0.3rem;
+        border-top-left-radius: 0.3rem;
+        background-color: #fafafa;
+        border: 0.1rem solid #ccc;
+        border-bottom: 0;
+        position: relative;
+        .commentForm_tabs {
+          display: inline-block;
+          .commentForm_tab {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.3rem;
+            color: #aaa;
+            cursor: pointer;
+            line-height: 2rem;
+          }
+          .commentForm_tab.active:first-child {
+            border-top-left-radius: 0.3rem;
+          }
+          .commentForm_tab.active {
+            color: #666;
+            background-color: #fff;
+          }
+          .commentForm_tab:hover {
+            text-decoration: none;
+          }
+        }
+
+      }
+      .commentForm_body {
+        padding: 0.5rem 0.5rem 0;
+        border: 0.1rem solid #ccc;
+        border-top: 0;
+        border-bottom: 0;
+        background-color: #fff;
+        .form-control {
+          height: auto;
+          padding: 0;
+          box-sizing: border-box;
+          textarea {
+            border: none;
+            width: 100%;
+            font-size: 1.5rem;
+            height: 20rem;
+            resize: none;
+            word-break: break-word;
+          }
+          .preview-area {
+            font-size: 1.5rem;
+            min-height: 20rem;
+            max-height: 50rem;
+            word-break: break-word;
+            overflow: scroll;
+            padding: 0.2rem;
+            margin-bottom: 0.4rem;
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+      .commentForm_imageUploader {
+        border-bottom-right-radius: 0.3rem;
+        border-bottom-left-radius: 0.3rem;
+        position: relative;
+        height: 4.6rem;
+        padding: 1rem 0.5rem;
+        border: solid 0.1rem #ccc;
+        border-top: 0;
+        background-color: #fff;
+        margin: 0;
+        color: #999;
+        font-size: 1.3rem;
+        .commentForm_imageUploader-button {
+          margin-right: 0.5rem;
+          padding: 0.5rem 0.8rem;
+          font-size: 1.3rem;
+          color: #555;
+          line-height: 1;
+          border: solid 0.1rem #ccc;
+        }
+        .commentForm_btns {
+          position: absolute;
+          top: 0.5rem;
+          right: 0.5rem;
+          margin: 0.3rem 0.5rem 0 0;
+          .btn-primary {
+            min-width: 7rem;
+            font-size: 1.4rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 0.3rem;
+          }
+        }
+      }
+    }
+  }
 
  //画面サイズごとの出し分け
 @media (max-width: 1200px){

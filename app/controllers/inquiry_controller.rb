@@ -1,5 +1,6 @@
-class InquiryController < ApplicationController
+# frozen_string_literal: true
 
+class InquiryController < ApplicationController
   def index
     @inquiry = Inquiry.new
     render :index
@@ -25,6 +26,4 @@ class InquiryController < ApplicationController
   def inquiry_params
     params.require(:inquiry).permit(:name, :email, :message)
   end
-
-
 end

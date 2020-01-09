@@ -22,8 +22,9 @@
               %button.article-favorite-button
                 %i.fas.fa-star
           .it-Actions_jumpToCommentButton
-            .it-Actions_commentCount 1
-            .fa.fa-fw.fa-comment
+            .it-Actions_commentCount 
+              =@article.comments.count
+            .fa.fa-fw.fa-comment{href: "#comments"}
           .SocialMediaShareButton.SocialMediaShareButton--twitter
             =link_to "", target:"_blank", onclick:"window.open('http://twitter.com/share?url=#{request.url}&hashtags=Quuta,球太','subwin','width=500,height=500'); return false;" do
               %div
@@ -170,124 +171,77 @@
       -#               %a{href: ""} 見出しごとのリンク
       -#         %li
       -#           %a{href: ""} 見出しごとのリンク
-  .articles_container
-    .articles_leftDummy
-    .articles_main
-      .articles_aside.mt-5
-        -# 被リンク記事表示の際、使用
-        -# #logly-lift-4279494
-        -# .articles_aside.mt-4
-        -#   .articles_footnote
-        -#     %ul.references.js-referencesView.mt-5
-        -#       %li.references_header
-        -#         %i.fa.fa-fw.fa-link
-        -#         この記事は以下の記事からリンクされています
-        -#       %li.references_reference.js-reference
-        -#         %a{href: "/takahoyo/items/4f8af6b68d2c1f3a7775#_reference-86fc3a02e90d6fa6a444"}
-        -#           %img{:alt => "", :height => "18", :src => "https://s3-ap-northeast-1.amazonaws.com/qiita-image-store/0/67875/60c1776248cedf03de9774ac36ed98fc1a97399e/x_large.png?1576297134", :width => "18"}>/
-        -#           リンクしてる記事
-        -#         %span からリンク
-        -#         %time.references_datetime.js-dateTimeView{:datetime => "2019-12-15T14:59:27+00:00"} 約14時間前
-        -# .articles_aside.mt-5
-          -# コメント実装時、使用
-          -# #comments.itemsShowComment_wrapper
-          -#   #PublicCommentListContainer-react-component-3b26de0e-42d9-4a6c-94a5-69486093ba0a
-          -#     .commentList
-          -#       .comment
-          -#         .commentHeader
-          -#           .commentHeader_creator
-          -#             %a{href: "/hirorock", :itemprop => "url", :title => "hirorock"}
-          -#               %img.commentHeader_creatorIcon{:alt => "", :height => "36", :itemprop => "image", :src => "https://qiita-user-profile-images.imgix.net/https%3A%2F%2Fqiita-image-store.s3.amazonaws.com%2F0%2F37670%2Fprofile-images%2F1473687506?ixlib=rb-1.2.2&auto=compress%2Cformat&lossless=0&w=48&s=aa87a822e7d5621fa14d46c0d7012e2f", :width => "36"}/
-          -#             .commentHeader_creatorInfo
-          -#               .commentHeader_publicUrlName
-          -#                 %a{href: "/hirorock"} コメントユーザー名
-          -#               .commentHeader_contribution
-          -#                 %span.commentHeader_contribution_count 198
-          -#                 %span.commentHeader_contribution_unit contribution
-          -#           .commentHeader_metadata.pull-right
-          -#             .text-right
-          -#               %a{href: "#comment-077e28b95c870e3a277b"}
-          -#                 %time{:datetime => "2019-12-14T23:46:15+09:00", :itemprop => "commentTime"} 2019-12-14 23:46
-          -#               %span
-          -#                  | 
-          -#                 %a{"data-target" => "#js-comment-report-form-1487128", "data-toggle" => "modal", href: "#"} 通報
-          -#             .LikeButton.LikeButton--small
-          -#               %button.p-button
-          -#                 %span.fa.fa-fw.fa-thumbs-up
-          -#                 %span いいね
-          -#               .LikeButton__balloon 4
-          -#           #js-comment-report-form-1487128.js-comment-report-form.modal.fade.reportForm
-          -#             .modal-dialog
-          -#               .modal-content
-          -#                 .modal-header
-          -#                   %button.close{"data-dismiss" => "modal", :name => "button", :type => "submit"} ×
-          -#                   %h4.modal-title 問題があるコメントを報告する
-          -#                 .modal-body
-          -#                   %form#new_public_issue_report.new_public_issue_report{"accept-charset" => "UTF-8", :action => "/api/internal/issue_reports", :method => "post"}
-          -#                     %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-          -#                     %input{:name => "authenticity_token", :type => "hidden", :value => "UInz9pucuhr9CYN8d2enqIhPrT/SwBFRwZr0d0VhDh9tWNYzAmMWr2A2dXBMh8rOecAnAdKprdY02jcnArm0CA=="}/
-          -#                     %input#public_issue_report_target_type{:name => "public_issue_report[target_type]", :type => "hidden", :value => "Comment"}/
-          -#                     %input#public_issue_report_target_id{:name => "public_issue_report[target_id]", :type => "hidden", :value => "1487128"}/
-          -#                     %p この投稿にどのような問題がありますか？
-          -#                     %br/
-          -#                     .form-group
-          -#                       %ul.list-unstyled
-          -#                         %li
-          -#                           %label
-          -#                             %input#public_issue_report_reason_spam{:name => "public_issue_report[reason]", :required => "", :type => "radio", :value => "spam"}>/
-          -#                             スパムです
-          -#                         %li
-          -#                           %label
-          -#                             %input#public_issue_report_reason_harassment{:name => "public_issue_report[reason]", :required => "", :type => "radio", :value => "harassment"}>/
-          -#                             攻撃的または迷惑な内容を含んでいます
-          -#                         %li
-          -#                           %label
-          -#                             %input#public_issue_report_reason_inappropriate_content{:name => "public_issue_report[reason]", :required => "", :type => "radio", :value => "inappropriate_content"}>/
-          -#                             不適切な内容を含んでいます
-          -#                     .reportForm_submitButtonContainer
-          -#                       %button.btn.btn-primary.reportForm_submitButton{:name => "button", :type => "submit"}
-          -#                         %i.fa.fa-send>
-          -#                         送信
-          -#         .comment_content
-          -#           .it-MdContent
-          -#             %p
-          -#               コメント本文
-          -#       .commentForm
-          -#         %form{:action => "/comments/", :datatype => "json", :method => "post"}
-          -#           .commentForm_header
-          -#             %img.commentForm_userIcon{:height => "36", :src => "https://pbs.twimg.com/profile_images/1174154846615662593/S8pmypM9_bigger.jpg", :width => "36"}/
-          -#             .commentForm_headerLabel コメントを投稿する
-          -#           .commentForm_contentHeader
-          -#             .commentForm_tabs
-          -#               %a.commentForm_tab.edit.active 編集
-          -#               %a.commentForm_tab.preview プレビュー
-          -#             .commentForm_toolbar{:style => "display: flex;"}
-          -#               .markdownHelp_button
-          -#                 %i.fa.fa-question-circle{:currentitem => "false", "data-for" => "markdown-help-button", "data-tip" => "Markdown の書き方"}
-          -#                   #markdown-help-button.__react_component_tooltip.place-top.type-dark{"data-id" => "tooltip"}
-          -#               .emojiPicker
-          -#                 %span.emojiPicker_label
-          -#                   %i.fa.fa-smile-o{:currentitem => "false", "data-for" => "emoji-picker-tooltip-button", "data-tip" => "絵文字"}
-          -#                   #emoji-picker-tooltip-button.__react_component_tooltip.place-top.type-dark{"data-id" => "tooltip"}
-          -#                 .emojiPicker_container
-          -#           .commentForm_body.content-area.tab-pane{:style => "display: block;"}
-          -#             %textarea.form-control.commentForm_textarea{:maxlength => "10000", :placeholder => "コメントを入力してください", :style => "min-height: 100px; max-height: 500px; overflow: hidden; overflow-wrap: break-word; resize: none; height: 100px;"}
-          -#           .preview-area.tab-pane{:style => "display: none;"}
-          -#           .commentForm_imageUploader
-          -#             %input.commentForm_inputImageFile{:tabindex => "-1", :type => "file"}/
-          -#             %span.btn.btn-default.btn-xs.commentForm_imageUploader-button
-          -#               %i.fa.fa-picture-o>
-          -#               画像を選択
-          -#             %span.commentForm_imageUploader-text またはドラッグ＆ドロップ
-          -#             %span
-          -#               %span.commentForm_imageUploader-size
-          -#                 %span> - 209.88KB
-          -#                 \/
-          -#                 %span 100MB
-          -#               %i.fa.fa-info-circle.commentForm_imageUploader-info{"data-original-title" => "今月アップロード可能な画像の残り容量です", "data-placement" => "top", "data-toggle" => "tooltip", :title => ""}
-          -#             .commentForm_btns
-          -#               %button.btn.btn-primary.btn-sm 投稿
-      .articles_rightDummy
+    .articles_container
+      .articles_leftDummy
+      .articles_main
+        .articles_aside.mt-5
+          -# 被リンク記事表示の際、使用
+          -# #logly-lift-4279494
+          -# .articles_aside.mt-4
+          -#   .articles_footnote
+          -#     %ul.references.js-referencesView.mt-5
+          -#       %li.references_header
+          -#         %i.fa.fa-fw.fa-link
+          -#         この記事は以下の記事からリンクされています
+          -#       %li.references_reference.js-reference
+          -#         %a{href: "/takahoyo/items/4f8af6b68d2c1f3a7775#_reference-86fc3a02e90d6fa6a444"}
+          -#           %img{:alt => "", :height => "18", :src => "https://s3-ap-northeast-1.amazonaws.com/qiita-image-store/0/67875/60c1776248cedf03de9774ac36ed98fc1a97399e/x_large.png?1576297134", :width => "18"}>/
+          -#           リンクしてる記事
+          -#         %span からリンク
+          -#         %time.references_datetime.js-dateTimeView{:datetime => "2019-12-15T14:59:27+00:00"} 約14時間前
+
+        -# コメント機能
+        .articles_aside.mt-5
+          #comments.itemsShowComment_wrapper
+            #PublicCommentListContainer-react-component-3b26de0e-42d9-4a6c-94a5-69486093ba0a
+              .commentList
+                .comment
+                  -if @article.comments
+                    - @article.comments.each do |comment|
+                      .commentHeader
+                        .commentHeader_creator
+                          .commentHeader_creatorIcon
+                            = link_to root_path do
+                              -if comment.user.icon.present?
+                                =image_tag comment.user.icon.url
+                              -else
+                                =image_tag "quutan.jpg"
+                          .commentHeader_creatorInfo
+                            = link_to root_path, class: "commentHeader_creator" do
+                              .commentHeader_publicUrlName
+                                = comment.user.nickname
+                        .commentHeader_metadata.pull-right
+                          .text-right
+                            =comment.created_at.strftime("%Y-%m-%d %H:%M")
+                      .comment_content
+                        .it-MdContent
+                          = qiita_markdown(comment.comment)
+                .commentForm
+                  -if user_signed_in?
+                    = form_with url: comment_article_path(@article.id), method: :post do |f|
+                      .commentForm_header
+                        =image_tag current_user.icon.url
+                        .commentForm_headerLabel コメントを投稿する
+                      .commentForm_contentHeader
+                        .commentForm_tabs
+                          %a.commentForm_tab#comment_edit.active 編集
+                          %a.commentForm_tab#comment_preview プレビュー
+                      .commentForm_body.content-area.tab-pane
+                        .form-control.commentForm_textarea
+                          = f.text_area :comment,class: "commentForm_area" ,placeholder: "コメントを入力してください"
+                          .preview-area.tab-pane
+                      .commentForm_imageUploader
+                        %label.btn.btn-default.btn-xs.commentForm_imageUploader-button
+                          %i.far.fa-image
+                          %input.commentForm_inputImageFile{tabindex: "-1", type: "file", name: "images", style: "display:none;"}
+                          画像を選択
+                        %span.commentForm_imageUploader-text またはドラッグ＆ドロップ
+                        .commentForm_btns
+                          = f.submit 'コメントする', onclick: "submit();", type: "button",class:"btn-primary"
+                  -else
+                    .not-comment
+                      コメントはできません
+
 = render "shared/footer"
 
 
