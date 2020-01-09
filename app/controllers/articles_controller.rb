@@ -32,6 +32,11 @@ class ArticlesController < ApplicationController
     @favorite = Favorite.find_by(user: current_user, article: params[:id])
   end
 
+  def comment
+    @comments = Comment.create(comment: params[:comment], article_id: params[:id], user_id: current_user.id)
+    redirect_to action: 'show', id: params[:id]
+  end
+
   private
 
   def article_params
@@ -39,7 +44,7 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.includes(:comments).find(params[:id])
   end
 
   def image_params
@@ -48,5 +53,9 @@ class ArticlesController < ApplicationController
 
   def image2_params
     params.permit(:image)
+  end
+
+  def comment_params
+    params.permit(:comment, :id)
   end
 end
