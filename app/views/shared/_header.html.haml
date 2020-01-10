@@ -3,21 +3,10 @@
     .st-Header_start
       %a.st-Header_logo.mr-1
         = link_to root_path,class:"home-link" do
-          = image_tag 'quutalogo.png', height:'36'
-        .st-Header_realmSelector{tabindex: "0"}
-          %span.fa.fa-fw.fa-caret-down
-        .st-Header_dropdown.st-RealmSelector
-          .st-RealmSelector_realms
-            %a.st-Header_dropdownItem.st-RealmItem
-        .d-none.d-lg-block.st-Header_home{tabindex: "0"}
-          ホーム
-          %span.fa.fa-fw.fa-caret-down.ml-1of2
-        .d-none.d-lg-block.st-Header_community{tabindex: "0"}
-          コミュニティ
-          %span.fa.fa-fw.fa-caret-down.ml-1of2
+          = image_tag 'quutalogo.png', height:'52'
       %form.st-Header_search{action: "/search", method: "get"}
         %span.fa.fa-search
-        %input.st-Header_searchInput{autocomplete: "off", name: "q", placeholder: "キーワードを入力", required: "", type: "search"}/
+        %input.st-Header_searchInput{autocomplete: "off", name: "q", placeholder: "キーワードを入力", required: "", type: "search"}
     - if user_signed_in?
       .st-Header_end
         %a.st-Header_stock.mr-2.py-2{href: "/stock"}
@@ -29,8 +18,19 @@
               投稿する
           .u-relative
             .st-Header_loginUser{tabindex: "0"}
-              = image_tag 'quuta.png', height:'20', alt: "", src: ""
-              %span.fa.fa-fw.fa-caret-down.ml-1
+              %button.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+                -if current_user.icon.present?
+                  = image_tag current_user.icon.url
+                -else
+                  =image_tag "quutan.jpg"
+              .dropdown-menu.dropdown-menu-right
+                = link_to "マイページ", "#", class: "dropdown-item"
+                = link_to "プロフィール編集", setting_profile_path(current_user), class: "dropdown-item"
+                = link_to "ユーザー設定", setting_account_path(current_user), class: "dropdown-item"
+                .dropdown-divider
+                = link_to "ログアウト", signout_path(current_user), method: :delete, class: "dropdown-item"
+      
+
     - else
       .st-Header_end
         = link_to signup_path, class: "st-Header_signupButton" do
