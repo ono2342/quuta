@@ -37,16 +37,24 @@ class ArticlesController < ApplicationController
     redirect_to action: 'show', id: params[:id]
   end
 
-  def edit; end
+  def edit
+    article = Article.find(params[:id])
+    redirect_to action: 'show', id: params[:id] if article.user_id != current_user.id
+  end
 
   def update
     article = Article.find(params[:id])
     if article.user_id == current_user.id
       article.update(article_params)
-      redirect_to root_path
+      redirect_to action: 'show', id: params[:id]
     else
-      render :edit
+      redirect_to action: 'show', id: params[:id]
     end
+  end
+
+  def destroy
+    article = Article.find(params[:id])
+    article.destroy if article.user_id == current_user.id
   end
 
   private
