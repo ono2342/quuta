@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show]
+  before_action :set_article, only: %i[show edit]
   before_action :authenticate_user!, except: [:show]
 
   def new
@@ -35,6 +35,18 @@ class ArticlesController < ApplicationController
   def comment
     @comments = Comment.create(comment: params[:comment], article_id: params[:id], user_id: current_user.id)
     redirect_to action: 'show', id: params[:id]
+  end
+
+  def edit; end
+
+  def update
+    article = Article.find(params[:id])
+    if article.user_id == current_user.id
+      article.update(article_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private

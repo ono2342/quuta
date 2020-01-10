@@ -3,7 +3,7 @@ $(document).on("turbolinks:load", function() {
   var v = ""
 
   function Load() {       //画像プレビュー
-    if(document.URL.match("articles/new")) {
+    if(document.URL.match("articles")) {
       var el = $("#article_text")[0];
       replaceMarkdown(el);
     }

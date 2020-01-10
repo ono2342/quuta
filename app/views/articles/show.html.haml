@@ -87,6 +87,11 @@
               #content
                 #mdraw
                   = qiita_markdown(@article.text)
+          .article-user-link
+            - if user_signed_in? && current_user.id == @article.user_id
+              .article-edit-link
+                = link_to '編集', edit_article_path(@article.id), method: :get
+
           %div{"data-mount-target": "articleFooterMenu"}
             .it-Footer
               .it-Footer_actions
