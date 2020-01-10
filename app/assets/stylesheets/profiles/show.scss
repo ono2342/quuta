@@ -1,5 +1,5 @@
 .profile-main{
-  padding: 2.4rem 1rem 4rem;
+  padding: 2.4rem 8rem 4rem;
   width: 100%;
   .profile-userprofile{
     display:flex;
@@ -14,7 +14,7 @@
     }
     .userprofile-right{
       width: 80%;
-      padding-left: 1rem;
+      margin-left: 3rem;
       font-size: 1.2rem;
       .prodile-name-follow-wrapper{
         display: flex;
@@ -91,26 +91,34 @@
     .profile-sidebar{
       position: -webkit-sticky;
       position: sticky;
-      top: 10vh;
+      top: 10rem;
       will-change: transform;
-      margin-top: 3rem;
+      margin: 4rem 0 0 1rem;
       width: 15rem;
       .menu{
         padding: 0 0 1rem 0;
         list-style: none;
         font-size: 1.6rem;
         &__item{
+          margin-bottom: 1.8rem;
           &--link{
             color: #337ab7;
+            i {
+              // color: #F4AC5A;
+            }
+            a{
+              font-weight: bold;
+
+            }
           }
         }
       }
     }
     .profile-content{
       min-height: 40rem;
-      margin:3rem auto 1rem;
-      padding-left: 1rem;
-      width: 75%;
+      padding-left: 2rem;
+      padding-top: 2rem;
+      width: 80%;
       .profile-content-title{
         font-size: 1.8rem;
         border-bottom: 1px solid #eee;
@@ -165,10 +173,15 @@
             }
             .profile-article-likes{
               margin: 0 2rem 0 auto;
-              line-height: 6rem;
               font-size: 1.6rem;
               color: #F4AC5A;
-              width: 4rem;
+              width: 6rem;
+              .profile-article-comments{
+                margin-top: 0.5rem;
+                font-size: 1.6rem;
+                .fa-comment{
+                }
+              }
             }
           }
         }
@@ -188,15 +201,3 @@
     }
   }
 }
-// .profile-content
-//   .profile-content-title
-//     投稿した記事
-//     -@user.articles.each do|article|
-//       .profile-article
-//         .profile-article-title
-//           =article.title
-//         .profile-article-date
-//           =link_to @user.nickname, "/profile/#{@user.nickname}"
-//           ="が"+article.created_at.strftime("%Y年%m月%d日")+"に投稿"
-//         .profile-article-likes
-//           =article.likes.count

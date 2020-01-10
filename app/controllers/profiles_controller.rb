@@ -4,33 +4,27 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, only: [:edit]
   before_action :set_array, only: %i[edit update]
   before_action :search_profile
-  before_action :sidebar_setting, except:[:edit,:update]
+  before_action :set_variable_for_profile, except:[:edit,:update]
 
   def show
-    @user = User.find_by(nickname: params[:user_name])
-    if @user.blank?
-      render template: "errors/error_404"
-    end
-    @relation = Relation.find_by(user: current_user, follower_id: @user)
-    @favorite = Favorite.where(user: current_user)
-    @favorites = []
-    @favorite.each do |favorite|
-      @favorites << favorite.article_id
-    end
-    @articles = Article.where(user:@user)
-    @articles = Article.page(params[:page]).per(15).order(created_at: "DESC")
+    @articles = Article.where(user:@user).page(params[:page]).per(15).order(created_at: "DESC")
   end
 
   def likes
+    @likes_articles = Like.where(user: @user).order(created_at: "DESC").pluck("article_id")
+    @articles = Article.where(id: @likes_articles).order("field(id, #{@likes_articles.join(',')})").page(params[:page]).per(15)
   end
 
   def comments
+    @comments = Comment.where(user: @user).order(created_at: "DESC").page(params[:page]).per(15)
   end
 
-  def follows 
+  def follows
+    @follows = @user.followings.order(created_at: "DESC").page(params[:page]).per(15)
   end
 
   def followers
+    @followers = @user.followers.order(created_at: "DESC").page(params[:page]).per(15)
   end
   
   def edit
@@ -53,6 +47,15 @@ class ProfilesController < ApplicationController
 
   private
 
+  def set_variable_for_profile
+    @user = User.find_by(nickname: params[:user_name])
+    if @user.blank?
+      render template: "errors/error_404"
+    end
+    @relation = Relation.find_by(user: current_user, follower_id: @user)
+    @favorites = Favorite.where(user: current_user).pluck("article_id")
+  end
+
   def search_profile
     @profile = Profile.find_by(user: current_user)
   end
@@ -67,8 +70,4 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:firstname, :lastname, :email_status, :team, :position, :batting, :throwing, :description, :twitter, :facebook)
   end
 
-  def sidebar_setting
-    @menulist = ["投稿した記事", "いいねした記事", "コメント", "フォロー", "フォロワー"]
-    @linklist = ["/profile/#{params[:user_name]}/posts", "/profile/#{params[:user_name]}/likes", "/profile/#{params[:user_name]}/comments", "/profile/#{params[:user_name]}/follows", "/profile/#{params[:user_name]}/followers"]
-  end
 end

@@ -18,6 +18,7 @@ $(document).on("turbolinks:load", function() {
   }
   
   // お気に入り時に解除ボタンに切り替え
+  $(document).off('click','.article-favorite-button')
   $(document).on('click','.article-favorite-button', function() {
     var articleId = $(".articles").data("id");
     $.ajax({
@@ -35,7 +36,8 @@ $(document).on("turbolinks:load", function() {
     })
   });
 
-  // 解除時にいいねボタンに切り替え
+  // 解除時にお気に入りボタンに切り替え
+  $(document).off('click','.article-unfavorite-button')
   $(document).on('click','.article-unfavorite-button', function() {
     var articleId = $(".articles").data("id");
     $.ajax({

@@ -1,0 +1,55 @@
+.profile-userprofile
+  .userprofile-left
+    .profile-icon
+      -if @user.icon.present?
+        =image_tag @user.icon.url
+      -else 
+        =image_tag "quutan.jpg"
+  .userprofile-right
+    .prodile-name-follow-wrapper
+      .profile-namearea
+        -if @user.profile.firstname.present? && @user.profile.lastname.present?
+          .profile-name
+            =@user.profile.lastname + " " + @user.profile.firstname
+          .profile-nickname
+            ="@"+@user.nickname
+        -else  
+          .profile-name
+            ="@"+@user.nickname
+      .profile-followsns-area
+        -if @user.profile.twitter.present?
+          =link_to "https://twitter.com/#{@user.profile.twitter}", target:"blank", class:"profile-twitter" do
+            %i.fab.fa-twitter
+        -if @user.profile.facebook.present?
+          =link_to "https://facebook.com/#{@user.profile.facebook}", target:"blank", class:"profile-facebook" do
+            %i.fab.fa-facebook
+        -if user_signed_in?
+          -unless current_user.id == @user.id
+            %span.userFollowButton{data:{id:"#{@user.id}"}}
+              -if @relation.nil?
+                %button.btn.btn-default.btn-block.userFollowButton_inner.btn-xs
+                  %i.i.fa.fa-user-plus
+                  フォロー
+              -else
+                %button.btn.btn-primary.btn-block.userUnfollowButton_inner.btn-xs
+                  フォロー中
+    -if @user.profile.description.present?
+      .profile-description
+        = @user.profile.description
+    -if @user.profile.email_status == "1"
+      .profile-email
+        =mail_to @user.email, "#{@user.email}"
+    .profile-team-position-area
+      - if @user.profile.team.present?
+        .profile-team
+          =@user.profile.team+"所属　"
+      - if @user.profile.position?
+        .profile-position
+          =@user.profile.position + "　"
+      -if @user.profile.throwing.present?
+        =@user.profile.throwing
+      -if @user.profile.batting.present?
+        =@user.profile.batting
+    -if @user == current_user
+      .profile-setting
+        =link_to "プロフィールを編集する", "/setting/profile",class:"profile-setting-link"

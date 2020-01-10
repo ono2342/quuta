@@ -1,0 +1,45 @@
+.profile-main{
+  .profile-content-wrapper{
+    .profile-content{
+      .profile-content-posts{
+        .profile-content-title{
+        }
+        .profile-follower-wrapper{
+          border-bottom: 1px solid #eee;
+          .profile-follower{
+            margin: 1.5rem 0;
+            display: flex;
+            .profile-follower-icon{
+              img{
+                border-radius:1rem;
+                width: 6rem;
+                height: 6rem;
+              }
+            }
+            .profile-follower-nickname{
+              line-height: 6rem;
+              margin-left: 1rem;
+              font-size: 1.5rem;
+            }
+            .profile-follower-followbutton{
+              margin: 2rem 1rem 0 auto;
+              .userFollowButton{
+                .userUnfollowButton_inner{
+                  width: 8rem;
+                  font-size: 1.2rem;
+                  background-color: #F4AC5A;
+                }
+                .userFollowButton_inner{
+                  width: 8rem;
+                  font-size: 1.2rem;
+                }
+              }
+            }
+          }
+        }
+      }
+      .profile-pagination{
+      }
+    }
+  }
+}

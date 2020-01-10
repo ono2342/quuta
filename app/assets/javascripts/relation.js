@@ -1,32 +1,36 @@
 $(document).on("turbolinks:load", function() {
-  function changeUnfollow(){
-    var html = $( `<button class="btn btn-primary btn-block userUnfollowButton_inner btn-xs">
-                    フォロー中
-                  </button>
-                    `);
-    $(".userFollowButton").append(html);
+  function changeUnfollow(target){
+    target.text("フォロー中");
+    target.css('background-color','#F4AC5A');
+    target.css('color','#FFF');
+    target.addClass('userUnfollowButton_inner');
+    target.removeClass('userFollowButton_inner');
   }
 
-  function changeFollow(){
-    var html = $( ` <button class="btn btn-default btn-block userFollowButton_inner btn-xs">
-                    <i class="i fa fa-user-plus"></i>
-                    フォロー
-                    </button>`);
-    $(".userFollowButton").append(html);
+  function changeFollow(target){
+    var parent = target.parent();
+    parent.empty()
+    var html = $(`<button class="btn btn-default btn-block userFollowButton_inner btn-xs">
+                  <i class="i fa fa-user-plus"></i>
+                  フォロー
+                  </button>`);
+    parent.append(html);
   }
   
   // フォロー時に解除ボタンに切り替え
+  $(document).off('click','.userFollowButton_inner')
   $(document).on('click','.userFollowButton_inner', function() {
-    var articleUserId = $(".userFollowButton").data("id");
+    var target = $(this);
+    var userId = target.parent().data("id");
+    console.log(userId);
     $.ajax({
       type: "post",
       url: "/relations/follow",
-      data: {user_id: articleUserId},
+      data: {user_id: userId},
       dataType: "json",
     })
     .done(function(i){ 
-      $(".userFollowButton").empty();
-      changeUnfollow();
+      changeUnfollow(target);
     })
     .fail(function(){
       alert("ログインしてください");
@@ -35,17 +39,19 @@ $(document).on("turbolinks:load", function() {
   });
 
   // 解除時にフォローボタンに切り替え
+  $(document).off('click','.userUnfollowButton_inner')
   $(document).on('click','.userUnfollowButton_inner', function() {
-    var articleUserId = $(".userFollowButton").data("id");
+    var target = $(this);
+    var userId = target.parent().data("id");
+    console.log(userId);
     $.ajax({
       type: "post",
       url: "/relations/unfollow",
-      data: {user_id: articleUserId},
+      data: {user_id: userId},
       dataType: "json",
     })
     .done(function(i){ 
-      $(".userFollowButton").empty();
-      changeFollow();
+      changeFollow(target);
     })
     .fail(function(){
       alert("ログインしてください");
@@ -54,13 +60,13 @@ $(document).on("turbolinks:load", function() {
   });
 
   // ボタンホバー時の挙動
-  $(document).on("mouseenter", ".btn-primary", function () {
-    $(".btn-primary").css('background-color','#c9302c');
-    $('.btn-primary').text("解除");
+  $(document).on("mouseenter", ".userUnfollowButton_inner", function () {
+    $(this).css('background-color','#c9302c');
+    $(this).text("解除");
   });
-  $(document).on("mouseleave", ".btn-primary", function () {
-      $(".btn-primary").text("フォロー中");
-      $(".btn-primary").css('background-color','#F4AC5A');
+  $(document).on("mouseleave", ".userUnfollowButton_inner", function () {
+      $(this).text("フォロー中");
+      $(this).css('background-color','#F4AC5A');
   });
 
 })

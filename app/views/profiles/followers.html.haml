@@ -1,0 +1,34 @@
+= render "shared/header"
+.profile-main
+  =render"profile"
+  .profile-content-wrapper
+    = render "sidebar"
+    .profile-content
+      .profile-content-posts
+        .profile-content-title
+          フォロワー
+        -@followers.each do|follower|
+          .profile-follower-wrapper
+            .profile-follower
+              .profile-follower-icon
+                =link_to "/profile/#{follower.nickname}/posts" do
+                  -if follower.icon.present?
+                    =image_tag follower.icon.url
+                  -else
+                    =image_tag "quutan.jpg"
+              .profile-follower-nickname
+                =follower.nickname
+              .profile-follower-followbutton
+                -if user_signed_in?
+                  - if current_user != follower
+                    %span.userFollowButton{data:{id:"#{follower.id}"}}
+                      -if current_user.followings.include?(follower)
+                        %button.btn.btn-primary.btn-block.userUnfollowButton_inner.btn-xs
+                          フォロー中
+                      -else
+                        %button.btn.btn-default.btn-block.userFollowButton_inner.btn-xs
+                          %i.i.fa.fa-user-plus
+                          フォロー
+      .profile-pagination
+        =paginate @followers
+= render "shared/footer"

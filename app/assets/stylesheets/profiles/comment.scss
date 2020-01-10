@@ -1,0 +1,53 @@
+.profile-main{
+  .profile-content-wrapper{
+    .profile-content{
+      .profile-content-posts{
+        .profile-content-title{
+        }
+        .profile-comment-wrapper{
+            border-bottom: 1px solid #eee;
+            .profile-comment{
+              margin: 1.5rem 0;
+              display: flex;
+              .profile-comment-icon{
+                img{
+                  border-radius:1rem;
+                  width: 6rem;
+                  height: 6rem;
+                }
+              }
+              .profile-comment-detail{
+                width: 100%;
+                .profile-comment-titledate-wrapper{
+                  display: flex;
+                  width: 100%;
+                  .profile-comment-title{
+                    font-size: 1.4rem;
+                    margin-left: 1rem;
+                  }
+                  .profile-comment-date{
+                    margin: 0 1rem 0 auto;
+                    font-weight: 400;
+                    color: #aaa;
+                    font-size: 1.2rem;
+                  }
+                }
+                .profile-comment-text{
+                  margin-top: 0.5rem;
+                  margin-left: 1rem;
+                  p{
+                    font-size: 1.3rem;
+                  }
+                  img{
+                    width: 16rem;
+                  }
+                }
+            }
+          }
+      }
+    }
+      .profile-pagination{
+      }
+    }
+  }
+}

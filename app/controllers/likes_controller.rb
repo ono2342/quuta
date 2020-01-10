@@ -6,6 +6,7 @@ class LikesController < ApplicationController
     @article = Article.find(params[:article_id])
     if current_user != @article.user
       Like.create(user: current_user, article: @article)
+      @result = true
     else
       @result = false
     end

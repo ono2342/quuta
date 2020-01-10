@@ -16,6 +16,7 @@ $(document).on("turbolinks:load", function() {
   }
   
   // お気に入り時に解除ボタンに切り替え
+  $(document).off('click','.profile-article-favorite')
   $(document).on('click','.profile-article-favorite', function() {
     var target = $(this);
     var articleId = target.data("id");
@@ -35,6 +36,7 @@ $(document).on("turbolinks:load", function() {
   });
 
   // 解除時にいいねボタンに切り替え
+  $(document).off('click','.profile-article-favorited')
   $(document).on('click','.profile-article-favorited', function() {
     var target = $(this);
     var articleId = target.data("id");

@@ -745,6 +745,9 @@
               width: 100%;
             }
           }
+          .commentForm_area:focus{
+            outline: none;
+          }
         }
       }
       .commentForm_imageUploader {
