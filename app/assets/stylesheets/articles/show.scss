@@ -281,7 +281,14 @@
             line-height: 1.9;
           }
         }
-
+        .article-user-link {
+          margin-top: 5rem;
+          display: flex;
+          font-size: 1.6rem;
+          p {
+            margin: 0 0.5rem;
+          }
+        }
         .it-Footer {
           display: flex;
           flex-wrap: wrap;

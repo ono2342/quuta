@@ -87,6 +87,16 @@
               #content
                 #mdraw
                   = qiita_markdown(@article.text)
+          .article-user-link
+            - if user_signed_in? && current_user.id == @article.user_id
+              .article-edit-link
+                = link_to '編集', edit_article_path(@article.id), method: :get
+              %p 
+                |
+              .article-destroy-link
+                %a{href: "", id: "article-destroy-modal"} 削除
+                = link_to '削除', article_path(@article.id), method: :delete, id: "article-destroy-trigger", style: "display:none;"
+
           %div{"data-mount-target": "articleFooterMenu"}
             .it-Footer
               .it-Footer_actions
@@ -220,7 +230,10 @@
                   -if user_signed_in?
                     = form_with url: comment_article_path(@article.id), method: :post do |f|
                       .commentForm_header
-                        =image_tag current_user.icon.url
+                        - if current_user.icon.present?
+                          =image_tag current_user.icon.url
+                        - else
+                          =image_tag "quutan.jpg", class:"it-Header_authorImage"
                         .commentForm_headerLabel コメントを投稿する
                       .commentForm_contentHeader
                         .commentForm_tabs
