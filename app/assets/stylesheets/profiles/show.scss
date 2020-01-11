@@ -63,15 +63,15 @@
         }
       }
       .profile-description{
-        border-top: 1px solid #eee;
+        border-top: 0.1rem solid #eee;
       }
       .profile-email{
-        border-top: 1px solid #eee;
+        border-top: 0.1rem solid #eee;
         font-size: 1.4rem;
       }
       .profile-team-position-area{
         display: flex;
-        border-top: 1px solid #eee;
+        border-top: 0.1rem solid #eee;
         font-size: 1.4rem;
         .profile-team{
         }
@@ -104,12 +104,16 @@
           &--link{
             color: #337ab7;
             i {
-              // color: #F4AC5A;
             }
             a{
               font-weight: bold;
-
             }
+          }
+          &--link:hover{
+            text-decoration: none;
+          }
+          .active{
+            font-weight: bold;
           }
         }
       }
@@ -121,11 +125,11 @@
       width: 80%;
       .profile-content-title{
         font-size: 1.8rem;
-        border-bottom: 1px solid #eee;
+        border-bottom: 0.1rem solid #eee;
         font-weight: 600
       }
       .profile-article-wrapper{
-        border-bottom: 1px solid #eee;
+        border-bottom: 0.1rem solid #eee;
         .profile-article{
           margin: 1.5rem 0;
           display: flex;
@@ -200,4 +204,44 @@
       }
     }
   }
+
 }
+
+  // 画面サイズにより可変
+  @media (max-width: 576px){
+    .profile-main{
+      padding: 1rem;
+      width: 100%;
+      .profile-userprofile{
+        display:block;
+        .userprofile-left{
+          .profile-icon{
+            img{
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+        .userprofile-right{
+          width: 100%;
+          margin-left: 0;
+          margin-top: 1rem;
+        }
+      }
+      .profile-content-wrapper{
+        display: block;
+        .profile-content{
+          min-height: 40rem;
+          padding-left: 0;
+          padding-top: 0;
+          width: 100%;
+        }
+        .profile-sidebar {
+          position: static;
+          margin: 4rem 0 0 1rem;
+          text-align: center;
+          width: 100%;
+      }
+      }
+    }
+  }

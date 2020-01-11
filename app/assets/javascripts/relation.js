@@ -22,7 +22,6 @@ $(document).on("turbolinks:load", function() {
   $(document).on('click','.userFollowButton_inner', function() {
     var target = $(this);
     var userId = target.parent().data("id");
-    console.log(userId);
     $.ajax({
       type: "post",
       url: "/relations/follow",
@@ -43,7 +42,6 @@ $(document).on("turbolinks:load", function() {
   $(document).on('click','.userUnfollowButton_inner', function() {
     var target = $(this);
     var userId = target.parent().data("id");
-    console.log(userId);
     $.ajax({
       type: "post",
       url: "/relations/unfollow",

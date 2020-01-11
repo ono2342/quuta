@@ -2,22 +2,22 @@
   .profile-sidebar
     %ul.menu
       %li.menu__item
-        = link_to "/profile/#{@user.nickname}/posts", class:'menu__item--link',data: { turbolinks: false} do
+        = link_to "/profile/#{@user.nickname}/posts", class:"menu__item--link #{sidebar_activelink("posts")}",data: { turbolinks: false} do
           %i.fas.fa-pen-square
           投稿した記事
       %li.menu__item
-        = link_to "/profile/#{@user.nickname}/likes", class:'menu__item--link',data: { turbolinks: false} do
+        = link_to "/profile/#{@user.nickname}/likes", class:"menu__item--link #{sidebar_activelink("likes")}",data: { turbolinks: false} do
           %i.fas.fa-baseball-ball
           いいねした記事
       %li.menu__item
-        = link_to "/profile/#{@user.nickname}/comments", class:'menu__item--link',data: { turbolinks: false} do
+        = link_to "/profile/#{@user.nickname}/comments", class:"menu__item--link #{sidebar_activelink("comments")}",data: { turbolinks: false} do
           %i.fas.fa-comment
           コメント
       %li.menu__item
-        = link_to "/profile/#{@user.nickname}/follows", class:'menu__item--link',data: { turbolinks: false} do
+        = link_to "/profile/#{@user.nickname}/follows", class:"menu__item--link #{sidebar_activelink("follows")}",data: { turbolinks: false} do
           %i.fas.fas.fa-users
-          フォロー
+          =@user.followings.count.to_s + " フォロー"
       %li.menu__item
-        = link_to "/profile/#{@user.nickname}/followers", class:'menu__item--link',data: { turbolinks: false} do
+        = link_to "/profile/#{@user.nickname}/followers", class:"menu__item--link #{sidebar_activelink("followers")}",data: { turbolinks: false} do
           %i.fas.fa-users
-          フォロワー
+          =@user.followers.count.to_s + " フォロワー"

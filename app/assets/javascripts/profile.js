@@ -54,5 +54,4 @@ $(document).on("turbolinks:load", function() {
       window.location.href = "/login";
     })
   });
-  
 })
