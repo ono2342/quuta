@@ -1,6 +1,7 @@
 = render "shared/header"
 
 = link_to "logout","/signout",{method: :delete}
+= Rails.env
 - if user_signed_in?
   = current_user.nickname
   = current_user.email
