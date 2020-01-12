@@ -1,0 +1,32 @@
+= render "shared/header"
+.profile-main
+  =render"profile"
+  .profile-content-wrapper
+    = render "sidebar"
+    .profile-content
+      .profile-content-posts
+        .profile-content-title
+          コメント
+        -@comments.each do|comment|
+          .profile-comment-wrapper
+            .profile-comment
+              .profile-comment-icon
+                =link_to "/profile/#{comment.user.nickname}/posts" do
+                  -if comment.user.icon.present?
+                    =image_tag comment.article.user.icon.url
+                  -else
+                    =image_tag "quutan.jpg"
+              .profile-comment-detail
+                .profile-comment-titledate-wrapper
+                  .profile-comment-title
+                    =link_to comment.article.user.nickname, "/profile/#{comment.article.user.nickname}/posts"
+                    が投稿した
+                    =link_to comment.article.title, "/articles/#{comment.article.id}"
+                    にコメント
+                  .profile-comment-date
+                    =comment.created_at.strftime("%Y年%m月%d日 %H:%M")
+                .profile-comment-text
+                  = qiita_markdown(comment.comment)
+      .profile-pagination
+        =paginate @comments
+= render "shared/footer"

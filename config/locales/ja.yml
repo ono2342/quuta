@@ -229,3 +229,19 @@ ja:
   recaptcha: 
     errors: 
       verification_failed: 'reCAPTCHA認証に失敗しました。' 
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      previous: "<"
+      next: ">"
+      truncate: "..."
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: ""
+          one: "<strong>1-1</strong>/1件中"
+          other: "<strong>1-%{count}</strong>/%{count}件中"
+      more_pages:
+        display_entries: "<strong>%{first}-%{last}</strong>/%{total}件中"

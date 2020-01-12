@@ -22,6 +22,10 @@
 
 // profiles
 @import "profiles/edit";
+@import "profiles/show";
+@import "profiles/comment";
+@import "profiles/follows";
+@import "profiles/followers";
 
-@import "homes";
-@import 'inquiry'
+// top
+@import "homes";@import 'inquiry'

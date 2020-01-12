@@ -79,7 +79,7 @@
             -if @profile.errors.messages[:description].any?
               = render 'layouts/validates_error', errors:@profile.errors.full_messages_for(:description)
             -else 
-              500文字以内
+              200文字以内
         .st-Form
           %label.string.optional.st-Form_label Twitter ID
           .st-Form_group

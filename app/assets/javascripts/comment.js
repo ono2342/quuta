@@ -5,11 +5,12 @@ $(document).on("turbolinks:load", function() {
     str = $("#comment").val();
     $(".preview-area").html(marked(str));
   }
-  document.getElementById("comment_preview").onclick = function() {  // プレビューをクリックで発火
+  
+  $("#comment_preview").on("click",function(){  // プレビューをクリックで発火
     $(".preview-area").show();
     $(".commentForm_area, .commentForm_imageUploader-button, .commentForm_imageUploader-text").hide();
     replaceMarkdown();
-  };
+  });
   
   $(function(){
     $('#comment').inlineattachment({      //画像ドラッグドロップ
@@ -51,10 +52,10 @@ $(document).on("turbolinks:load", function() {
     })
   });
 
-  document.getElementById("comment_edit").onclick = function() {  // プレビューをクリックで発火
+  $("#comment_edit").on("click",function(){  // プレビューをクリックで発火
     $(".preview-area").hide();
     $(".commentForm_area, .commentForm_imageUploader-button, .commentForm_imageUploader-text").show();
-  };
+  });
   
   $(".commentForm_tab").on("click",function(){  //タブ切り替え
     var $th = $(this).index();

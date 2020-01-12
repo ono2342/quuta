@@ -16,6 +16,7 @@ $(document).on("turbolinks:load", function() {
   }
   
   // いいね時に解除ボタンに切り替え
+  $(document).off('click','.article-like-button')
   $(document).on('click','.article-like-button', function() {
     var articleId = $(".articles").data("id");
     $.ajax({
@@ -42,6 +43,7 @@ $(document).on("turbolinks:load", function() {
   });
 
   // 解除時にいいねボタンに切り替え
+  $(document).off('click','.article-unlike-button')
   $(document).on('click','.article-unlike-button', function() {
     var articleId = $(".articles").data("id");
     $.ajax({

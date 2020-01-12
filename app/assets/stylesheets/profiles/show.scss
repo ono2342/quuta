@@ -1,0 +1,247 @@
+.profile-main{
+  padding: 2.4rem 8rem 4rem;
+  width: 100%;
+  .profile-userprofile{
+    display:flex;
+    .userprofile-left{
+      .profile-icon{
+        img{
+          width: 15rem;
+          height: 15rem;
+          border-radius:1rem;
+        }
+      }
+    }
+    .userprofile-right{
+      width: 80%;
+      margin-left: 3rem;
+      font-size: 1.2rem;
+      .prodile-name-follow-wrapper{
+        display: flex;
+        .profile-namearea{
+          display: flex;
+          margin-right: 1rem;
+          .profile-name{
+            font-size: 1.8rem;
+            font-weight: 600;
+          }
+          .profile-nickname{
+            margin-left: 1rem;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #999;
+          }
+        }
+        .profile-followsns-area{
+          margin:0 1.6rem 0 auto;
+          display: flex;
+          margin-bottom: 1rem;
+          .profile-twitter{
+            font-size: 2rem;
+            color: #1DA1F2;
+            margin-right: 1rem;
+          }
+          .profile-facebook{
+            font-size: 2rem;
+            color: #3B5998;
+            margin-right: 1rem;
+          }
+          .userFollowButton {
+            display: inline-block;
+            width: 10rem;
+            text-align: center;
+            cursor: pointer;
+            .btn-block{
+              font-size: 1.2rem;
+            }
+            .userFollowButton_inner{
+            }
+            .userUnfollowButton_inner{
+              background-color: #F4AC5A;
+            }
+          }
+        }
+      }
+      .profile-description{
+        border-top: 0.1rem solid #eee;
+      }
+      .profile-email{
+        border-top: 0.1rem solid #eee;
+        font-size: 1.4rem;
+      }
+      .profile-team-position-area{
+        display: flex;
+        border-top: 0.1rem solid #eee;
+        font-size: 1.4rem;
+        .profile-team{
+        }
+        .profile-position{
+        }
+      }
+      .profile-setting{
+        text-align: right;
+        .profile-setting-link{
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+  .profile-content-wrapper{
+    display: flex;
+    .profile-sidebar{
+      position: -webkit-sticky;
+      position: sticky;
+      top: 10rem;
+      will-change: transform;
+      margin: 4rem 0 0 1rem;
+      width: 15rem;
+      .menu{
+        padding: 0 0 1rem 0;
+        list-style: none;
+        font-size: 1.6rem;
+        &__item{
+          margin-bottom: 1.8rem;
+          &--link{
+            color: #337ab7;
+            i {
+            }
+            a{
+              font-weight: bold;
+            }
+          }
+          &--link:hover{
+            text-decoration: none;
+          }
+          .active{
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .profile-content{
+      min-height: 40rem;
+      padding-left: 2rem;
+      padding-top: 2rem;
+      width: 80%;
+      .profile-content-title{
+        font-size: 1.8rem;
+        border-bottom: 0.1rem solid #eee;
+        font-weight: 600
+      }
+      .profile-article-wrapper{
+        border-bottom: 0.1rem solid #eee;
+        .profile-article{
+          margin: 1.5rem 0;
+          display: flex;
+          .profile-article-icon{
+            img{
+            border-radius:1rem;
+            width: 6rem;
+            height: 6rem;
+            }
+          }
+          .profile-article-detail{
+            display: flex;
+            width: 100%;
+            .profile-article-title{
+              font-size: 1.6rem;
+              margin-left: 2rem;
+              width: 85%;
+              a{
+                color: #337ab7;
+              }
+              .profile-article-favoritedate-area{
+                display: flex;
+                margin-top: 1rem;
+                .profile-article-favorited{
+                  font-size: 1.4rem;
+                  background-color: #F4AC5A;
+                  border: 0.2rem solid #F4AC5A;
+                  color:#FFFF01;
+                  border-radius: 0.3rem;
+                  cursor: pointer;
+                }
+                .profile-article-favorite{
+                  font-size: 1.4rem;
+                  background-color: #777;
+                  border: 0.2rem solid #777;
+                  color:#FFF;
+                  border-radius: 0.3rem;
+                  cursor: pointer;
+                }
+                .profile-article-date{
+                  font-size: 1.4rem;
+                  margin-left: 1rem;
+                }
+              }
+            }
+            .profile-article-likes{
+              margin: 0 2rem 0 auto;
+              font-size: 1.6rem;
+              color: #F4AC5A;
+              width: 6rem;
+              .profile-article-comments{
+                margin-top: 0.5rem;
+                font-size: 1.6rem;
+                .fa-comment{
+                }
+              }
+            }
+          }
+        }
+      }
+      nav{
+        .pagination{
+          // display: inline;
+          padding-left: 0;
+          margin:4rem auto;
+          border-radius: 3px;
+          width: 5rem;
+          a{
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+  // 画面サイズにより可変
+  @media (max-width: 576px){
+    .profile-main{
+      padding: 1rem;
+      width: 100%;
+      .profile-userprofile{
+        display:block;
+        .userprofile-left{
+          .profile-icon{
+            img{
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+        .userprofile-right{
+          width: 100%;
+          margin-left: 0;
+          margin-top: 1rem;
+        }
+      }
+      .profile-content-wrapper{
+        display: block;
+        .profile-content{
+          min-height: 40rem;
+          padding-left: 0;
+          padding-top: 0;
+          width: 100%;
+        }
+        .profile-sidebar {
+          position: static;
+          margin: 4rem 0 0 1rem;
+          text-align: center;
+          width: 100%;
+      }
+      }
+    }
+  }
