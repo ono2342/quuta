@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   post 'likes/unlike', to: 'likes#delete'
 
   # お気に入り
+  get 'favorites', to: 'favorites#index'
   post 'favorites/favorite', to: 'favorites#create'
   post 'favorites/unfavorite', to: 'favorites#delete'
 

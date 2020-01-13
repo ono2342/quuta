@@ -9,8 +9,8 @@
         %input.st-Header_searchInput{autocomplete: "off", name: "q", placeholder: "キーワードを入力", required: "", type: "search"}
     - if user_signed_in?
       .st-Header_end
-        %a.st-Header_stock.mr-2.py-2{href: "/stock"}
-          %span.fa.fa-fw.fa-folder-open.mr-1of2
+        =link_to favorites_path ,class: "st-Header_stock mr-2 py-2" do
+          %span.fas.fa-star.mr-1of2
           %span.st-Header_stock-label.d-none.d-lg-block お気に入り一覧
           %a.mr-2.px-2
             = link_to new_article_path, class: "st-Header_postButton"do
@@ -25,6 +25,7 @@
                   = image_tag "quutan.jpg"
               .dropdown-menu.dropdown-menu-right
                 = link_to "マイページ", show_profile_path(current_user.nickname), class: "dropdown-item"
+                = link_to "お気に入り一覧", favorites_path, class: "dropdown-item"
                 = link_to "プロフィール編集", setting_profile_path(current_user), class: "dropdown-item"
                 = link_to "ユーザー設定", setting_account_path(current_user), class: "dropdown-item"
                 .dropdown-divider

@@ -22,10 +22,10 @@
                     =article.title
                   .profile-article-favoritedate-area
                     - if @favorites.include?(article.id)
-                      .profile-article-favorited{data:{id:article.id}}
+                      .article-favorited{data:{id:article.id}}
                         %i.fas.fa-star
                     - else
-                      .profile-article-favorite{data:{id:article.id}}
+                      .article-favorite{data:{id:article.id}}
                         %i.fas.fa-star
                     .profile-article-date
                       =link_to @user.nickname, "/profile/#{@user.nickname}"

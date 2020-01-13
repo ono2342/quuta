@@ -21,11 +21,11 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   case Rails.env
   when 'production'
-     storage :fog
+    storage :fog
   when 'development'
-     storage :file
+    storage :file
   when 'staging'
-     storage :fog
+    storage :fog
  end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

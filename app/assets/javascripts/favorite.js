@@ -3,7 +3,7 @@ $(document).on("turbolinks:load", function() {
     $(".article-favorite-button-text").text("お気に入り済み");
     $(".article-favorite-button").css('background-color','#F4AC5A');
     $(".article-favorite-button").css('border','0.1rem solid #F4AC5A');
-    $(".fa-star").css('color','#FFFF01');
+    $('.article-favorite-button').children('.fa-star').css('color','#FFFF01');
     $('.article-favorite-button').addClass('article-unfavorite-button');
     $('.article-favorite-button').removeClass('article-favorite-button');
   }
@@ -12,7 +12,7 @@ $(document).on("turbolinks:load", function() {
     $(".article-favorite-button-text").text("お気に入り");
     $(".article-unfavorite-button").css('background-color','#777');
     $(".article-unfavorite-button").css('border-color','#777');
-    $(".fa-star").css('color','#FFF');
+    $('.article-unfavorite-button').children('.fa-star').css('color','#FFF');
     $('.article-unfavorite-button').addClass('article-favorite-button');
     $('.article-unfavorite-button').removeClass('article-unfavorite-button');
   }

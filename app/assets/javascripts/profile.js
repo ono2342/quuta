@@ -3,21 +3,21 @@ $(document).on("turbolinks:load", function() {
     target.css('background-color','#F4AC5A');
     target.css('border','0.2rem solid #F4AC5A');
     target.css('color','#FFFF01');
-    target.addClass('profile-article-favorited');
-    target.removeClass('profile-article-favorite');
+    target.addClass('article-favorited');
+    target.removeClass('article-favorite');
   }
   
   function changeUnfavorite(target){
     target.css('background-color','#777');
     target.css('border','0.2rem solid #777');
     target.css('color','#FFF');
-    target.addClass('profile-article-favorite');
-    target.removeClass('profile-article-favorited');
+    target.addClass('article-favorite');
+    target.removeClass('article-favorited');
   }
   
   // お気に入り時に解除ボタンに切り替え
-  $(document).off('click','.profile-article-favorite')
-  $(document).on('click','.profile-article-favorite', function() {
+  $(document).off('click','.article-favorite')
+  $(document).on('click','.article-favorite', function() {
     var target = $(this);
     var articleId = target.data("id");
     $.ajax({
@@ -36,8 +36,8 @@ $(document).on("turbolinks:load", function() {
   });
 
   // 解除時にいいねボタンに切り替え
-  $(document).off('click','.profile-article-favorited')
-  $(document).on('click','.profile-article-favorited', function() {
+  $(document).off('click','.article-favorited')
+  $(document).on('click','.article-favorited', function() {
     var target = $(this);
     var articleId = target.data("id");
     $.ajax({
