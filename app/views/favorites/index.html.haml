@@ -7,7 +7,7 @@
       .favorite-article-wrapper
         .favorite-article
           .favorite-article-icon
-            =link_to "/profile/#{article.user.nickname}/posts" do
+            =link_to "/profile/#{article.user.id}/posts" do
               -if article.user.icon.present?
                 =image_tag article.user.icon.url
               -else
@@ -25,7 +25,7 @@
                     %i.fas.fa-star
                 .favorite-date-wrapper
                   .favorite-article-date
-                    =link_to article.user.nickname, "/profile/#{article.user.nickname}/posts"
+                    =link_to article.user.nickname, "/profile/#{article.user.id}/posts"
                     ="が"+article.created_at.strftime("%Y年%m月%d日")+"に投稿"
                   .favorite-article-favorited-date
                     =favorite.created_at.strftime("%m/%d/%H:%M")+" にお気に入り"

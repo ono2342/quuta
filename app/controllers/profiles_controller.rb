@@ -47,7 +47,7 @@ class ProfilesController < ApplicationController
   private
 
   def set_variable_for_profile
-    @user = User.find_by(nickname: params[:user_name])
+    @user = User.find_by(id: params[:user_id])
     render template: 'errors/error_404' if @user.blank?
     @relation = Relation.find_by(user: current_user, follower_id: @user)
     @favorites = Favorite.where(user: current_user).pluck('article_id')

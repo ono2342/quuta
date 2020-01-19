@@ -11,11 +11,17 @@
         -if @user.profile.firstname.present? && @user.profile.lastname.present?
           .profile-name
             =@user.profile.lastname + " " + @user.profile.firstname
-          .profile-nickname
-            ="@"+@user.nickname
+          - if @user.nickname.present?
+            .profile-nickname
+              ="@"+@user.nickname
+          - else
+            .profile-nickname ユーザー名が登録されていません
         -else  
-          .profile-name
-            ="@"+@user.nickname
+          - if @user.nickname.present?
+            .profile-name
+              ="@"+@user.nickname
+          - else
+            .profile-nickname ユーザー名が登録されていません
       .profile-followsns-area
         -if @user.profile.twitter.present?
           =link_to "https://twitter.com/#{@user.profile.twitter}", target:"blank", class:"profile-twitter" do

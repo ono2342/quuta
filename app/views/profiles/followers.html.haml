@@ -11,7 +11,7 @@
           .profile-follower-wrapper
             .profile-follower
               .profile-follower-icon
-                =link_to "/profile/#{follower.nickname}/posts" do
+                =link_to "/profile/#{follower.id}/posts" do
                   -if follower.icon.present?
                     =image_tag follower.icon.url
                   -else

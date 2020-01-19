@@ -47,12 +47,12 @@
             .u-flex-center-between.mb-3
               .it-Header_info
                 .it-Header_author
-                  =link_to show_profile_path(@article.user.nickname) do
+                  =link_to show_profile_path(@article.user.id) do
                     - if @article.user.icon.present?
                       =image_tag @article.user.icon.url, class:"it-Header_authorImage"
                     - else 
                       =image_tag "quutan.jpg", class:"it-Header_authorImage"
-                  =link_to show_profile_path(@article.user.nickname) do
+                  =link_to show_profile_path(@article.user.id) do
                     .it-Header_authorName
                       ="@#{@article.user.nickname}"
                 .it-Header_time
@@ -142,16 +142,16 @@
             .ai-User
               .ai-User_header
                 //マイページへのリンク
-                = link_to show_profile_path(@article.user.nickname) do
+                = link_to show_profile_path(@article.user.id) do
                   -if @article.user.icon.present?
                     =image_tag @article.user.icon.url, class:"ai-User_image"
                   -else
                     =image_tag "quutan.jpg", class:"ai-User_image"
                 - if @article.user.profile.lastname.present? && @article.user.profile.firstname.present?
                   .ai-User_name
-                    =link_to @article.user.profile.lastname + " " + @article.user.profile.firstname, show_profile_path(@article.user.nickname)
+                    =link_to @article.user.profile.lastname + " " + @article.user.profile.firstname, show_profile_path(@article.user.id)
                 .ai-User_urlname
-                  =link_to "@#{@article.user.nickname}", show_profile_path(@article.user.nickname)
+                  =link_to "@#{@article.user.nickname}", show_profile_path(@article.user.id)
                 - if @article.user.profile.description.present?
                   .ai-User_description
                     =@article.user.profile.description
@@ -210,13 +210,13 @@
                       .commentHeader
                         .commentHeader_creator
                           .commentHeader_creatorIcon
-                            = link_to show_profile_path(comment.user.nickname) do
+                            = link_to show_profile_path(comment.user.id) do
                               -if comment.user.icon.present?
                                 =image_tag comment.user.icon.url
                               -else
                                 =image_tag "quutan.jpg"
                           .commentHeader_creatorInfo
-                            = link_to show_profile_path(comment.user.nickname), class: "commentHeader_creator" do
+                            = link_to show_profile_path(comment.user.id), class: "commentHeader_creator" do
                               .commentHeader_publicUrlName
                                 = comment.user.nickname
                         .commentHeader_metadata.pull-right

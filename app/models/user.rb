@@ -20,7 +20,8 @@ class User < ApplicationRecord
   has_many :favorites
 
   # バリデーション
-  validates :nickname, presence: true, length: { maximum: 32 }, format: { with: /\A[-a-z]+\z/, message: 'は半角英字と「-」が使えます。' }, allow_blank: true, uniqueness: true
+  validates :nickname, presence: true, length: { maximum: 32 }, format: { with: /\A[-a-z]+\z/, message: 'は半角英字と「-」が使えます。' }, allow_blank: true, uniqueness: true, on: :create
+  validates :nickname, presence: true, length: { maximum: 32 }, format: { with: /\A[-a-z]+\z/, message: 'は半角英字と「-」が使えます。' }, uniqueness: true, on: :update
   validates :email, presence: true, uniqueness: true
   validates :password, on: :create, presence: true, length: { in: 8..32 }, format: { with: /\A[a-zA-Z0-9!-~]+\z/, message: 'は8文字以上32文字以下で、半角英字、数字、記号が使えます。' }
 
