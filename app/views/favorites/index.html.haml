@@ -1,0 +1,40 @@
+= render "shared/header"
+.favorite-content
+  .favorite-content-posts
+    .favorite-content-title
+      お気に入り
+    -@articles.zip(@favorites) do|article,favorite|
+      .favorite-article-wrapper
+        .favorite-article
+          .favorite-article-icon
+            =link_to "/profile/#{article.user.id}/posts" do
+              -if article.user.icon.present?
+                =image_tag article.user.icon.url
+              -else
+                =image_tag "quutan.jpg"
+          .favorite-article-detail
+            .favorite-article-title
+              =link_to "/articles/#{article.id}" do
+                =article.title
+              .favorite-article-favoritedate-area
+                - if @favorites.include?(article.id)
+                  .article-favorited{data:{id:article.id}}
+                    %i.fas.fa-star
+                - else
+                  .article-favorite{data:{id:article.id}}
+                    %i.fas.fa-star
+                .favorite-date-wrapper
+                  .favorite-article-date
+                    =link_to article.user.nickname, "/profile/#{article.user.id}/posts"
+                    ="が"+article.created_at.strftime("%Y年%m月%d日")+"に投稿"
+                  .favorite-article-favorited-date
+                    =favorite.created_at.strftime("%m/%d/%H:%M")+" にお気に入り"
+            .favorite-article-likes
+              %i.fas.fa-baseball-ball
+                =article.likes.count
+              .favorite-article-comments
+                %i.fas.fa-comment
+                  =article.comments.count
+  .favorite-pagination
+    =paginate @articles
+= render "shared/footer"

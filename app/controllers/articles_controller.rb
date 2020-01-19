@@ -39,7 +39,9 @@ class ArticlesController < ApplicationController
 
   def edit
     article = Article.find(params[:id])
-    redirect_to action: 'show', id: params[:id] if article.user_id != current_user.id
+    if article.user_id != current_user.id
+      redirect_to action: 'show', id: params[:id]
+    end
   end
 
   def update

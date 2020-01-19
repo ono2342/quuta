@@ -1,0 +1,192 @@
+.favorite-content{
+  padding: 2.4rem 20rem 4rem;
+  width: 100%;
+  min-height: 50rem;
+  .favorite-content-posts{
+    .favorite-content-title{
+      font-size: 1.8rem;
+      border-bottom: 0.1rem solid #eee;
+      font-weight: 600
+    }
+    .favorite-article-wrapper{
+      border-bottom: 0.1rem solid #eee;
+      .favorite-article{
+        margin: 1.5rem 0;
+        display: flex;
+        .favorite-article-icon{
+          img{
+            border-radius:1rem;
+            width: 6rem;
+            height: 6rem;
+          }
+        }
+        .favorite-article-detail{
+          display: flex;
+          width: 100%;
+          .favorite-article-title{
+            font-size: 1.6rem;
+            margin-left: 2rem;
+            width: 85%;
+            a{
+              color: #337ab7;
+            }
+            .favorite-article-favoritedate-area{
+              display: flex;
+              margin-top: 1rem;
+              .article-favorited{
+                font-size: 1.4rem;
+                background-color: #F4AC5A;
+                border: 0.2rem solid #F4AC5A;
+                color:#FFFF01;
+                border-radius: 0.3rem;
+                cursor: pointer;
+              }
+              .article-favorite{
+                font-size: 1.4rem;
+                background-color: #777;
+                border: 0.2rem solid #777;
+                color:#FFF;
+                border-radius: 0.3rem;
+                cursor: pointer;
+              }
+              .favorite-date-wrapper{
+                display: flex;
+                .favorite-article-date{
+                  font-size: 1.4rem;
+                  margin-left: 1rem;
+                }
+                .favorite-article-favorited-date{
+                  font-size: 1.4rem;
+                  margin-left: 1rem;
+                  color: #999;
+                }
+              }
+            }
+          }
+          .favorite-article-likes{
+            margin: 0 2rem 0 auto;
+            font-size: 1.6rem;
+            color: #F4AC5A;
+            width: 6rem;
+            .favorite-article-comments{
+              margin-top: 0.5rem;
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  nav{
+    .pagination{
+      // display: inline;
+      padding-left: 0;
+      margin:4rem auto;
+      border-radius: 0.3rem;
+      width: 5rem;
+      a{
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+  // 画面サイズにより可変
+  @media (max-width: 960px){
+    .favorite-content{
+      padding: 2.4rem 5rem 4rem;
+      width: 100%;
+      min-height: 50rem;
+      .favorite-content-posts{
+        .favorite-content-title{
+        }
+        .favorite-article-wrapper{
+          .favorite-article{
+            .favorite-article-icon{
+              img{
+              }
+            }
+            .favorite-article-detail{
+              .favorite-article-title{
+                a{
+                }
+                .favorite-article-favoritedate-area{
+                  display: flex;
+                  .article-favorited{
+                    width:2rem;
+                    height: 2.4rem;
+                  }
+                  .article-favorite{
+                    width:2rem;
+                    height: 2.4rem;
+                  }
+                  .favorite-date-wrapper{
+                    display: block;
+                    .favorite-article-date{
+                    }
+                    .favorite-article-favorited-date{
+                    }
+                  }
+                }
+              }
+              .favorite-article-likes{
+                min-width: 6rem;
+                .favorite-article-comments{
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px){
+    .favorite-content{
+      padding: 2.4rem 5rem 4rem;
+      width: 100%;
+      min-height: 50rem;
+      .favorite-content-posts{
+        .favorite-content-title{
+        }
+        .favorite-article-wrapper{
+          .favorite-article{
+            .favorite-article-icon{
+              img{
+              }
+            }
+            .favorite-article-detail{
+              .favorite-article-title{
+                a{
+                }
+                .favorite-article-favoritedate-area{
+                  display: block;
+                  .article-favorited{
+                    width:2rem;
+                    height: 2.4rem;
+                  }
+                  .article-favorite{
+                    width:2rem;
+                    height: 2.4rem;
+                  }
+                  .favorite-date-wrapper{
+                    display: block;
+                    .favorite-article-date{
+                    }
+                    .favorite-article-favorited-date{
+                      display: block;
+                    }
+                  }
+                }
+              }
+              .favorite-article-likes{
+                min-width: 6rem;
+                .favorite-article-comments{
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

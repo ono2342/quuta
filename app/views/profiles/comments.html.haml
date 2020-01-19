@@ -11,7 +11,7 @@
           .profile-comment-wrapper
             .profile-comment
               .profile-comment-icon
-                =link_to "/profile/#{comment.user.nickname}/posts" do
+                =link_to "/profile/#{comment.id}/posts" do
                   -if comment.user.icon.present?
                     =image_tag comment.article.user.icon.url
                   -else
@@ -19,7 +19,7 @@
               .profile-comment-detail
                 .profile-comment-titledate-wrapper
                   .profile-comment-title
-                    =link_to comment.article.user.nickname, "/profile/#{comment.article.user.nickname}/posts"
+                    =link_to comment.article.user.nickname, "/profile/#{comment.article.user.id}/posts"
                     が投稿した
                     =link_to comment.article.title, "/articles/#{comment.article.id}"
                     にコメント
