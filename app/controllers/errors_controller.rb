@@ -22,6 +22,6 @@ class ErrorsController < ActionController::Base
   end
 
   def show
-    raise env['action_dispatch.exception']
+    raise ['action_dispatch.exception']
   end
 end
