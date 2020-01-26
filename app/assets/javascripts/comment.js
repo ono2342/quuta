@@ -22,6 +22,7 @@ $(document).on("turbolinks:load", function() {
     });
   });
 
+  $(document).off('change','input[type=file]')
   $(document).on('change','input[type=file]', function() {     //inputタグで画像選択
     var formData = new FormData();
     if ($("input[name='images']").val()!== '') {
