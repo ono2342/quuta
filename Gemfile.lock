@@ -53,6 +53,7 @@ GEM
     autoprefixer-rails (9.7.3)
       execjs
     bcrypt (3.1.13)
+    bcrypt_pbkdf (1.0.1)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
@@ -120,6 +121,7 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
+    ed25519 (1.2.4)
     erubi (1.9.0)
     erubis (2.7.0)
     escape_utils (1.1.1)
@@ -401,6 +403,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt_pbkdf
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.1.1)
   byebug
@@ -418,6 +421,7 @@ DEPENDENCIES
   devise-i18n
   devise-i18n-views
   dotenv-rails
+  ed25519
   fog-aws
   font-awesome-sass
   haml-rails
