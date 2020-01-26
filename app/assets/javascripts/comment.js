@@ -22,8 +22,8 @@ $(document).on("turbolinks:load", function() {
     });
   });
 
-  $(document).off('change','input[type=file]')
-  $(document).on('change','input[type=file]', function() {     //inputタグで画像選択
+  $(document).off('change','#comment_image_file')
+  $(document).on('change','#comment_image_file', function() {     //inputタグで画像選択
     var formData = new FormData();
     if ($("input[name='images']").val()!== '') {
       formData.append( "image", $("input[name='images']").prop("files")[0] );
