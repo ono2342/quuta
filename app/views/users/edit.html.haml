@@ -1,4 +1,12 @@
 = render "shared/header"
+
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
+
 .setting.px-2.pt-4{class: "px-1@s pt-1@s"}
   .setting_container
     .setting_menu
@@ -40,7 +48,7 @@
             = render 'layouts/validates_error', errors:@user.errors.full_messages_for(:email)
         .st-Form.nickname
           %label.st-Form_label ユーザー名
-          = f.text_field :nickname ,placeholder: "ユーザー名は半角英字と「-」が使用できます", id:"user_nickname", class:"st-Form_text"
+          = f.text_field :nickname ,placeholder: "ユーザー名は半角英字と「-」が使用できます", id:"user_nickname", class:"st-Form_text", required:"required"
         .st-Form_help
           -if @user.errors.messages[:nickname].any?
             = render 'layouts/validates_error', errors:@user.errors.full_messages_for(:nickname)
