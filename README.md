@@ -17,7 +17,7 @@ AWS
 - Route53
 
 ### 機能一覧
-​
+
 - ユーザ登録(devise),ログイン機能全般
 - facebook/google/Twitter での omniauth 認証
 - 記事投稿（マークダウン記法）、リアルタイムプレビュー表示
