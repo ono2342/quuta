@@ -5,6 +5,9 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def new
+    unless current_user.nickname.present?
+      redirect_to setting_account_path(current_user), notice: '記事を投稿するにはユーザー名が必要です。'
+    end
     @article = Article.new
   end
 
@@ -20,8 +23,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(article_params)
-    redirect_to @article
+    @article = Article.new(article_params)
+    if @article.save
+      redirect_to @article
+    else
+      render 'new'
+    end
   end
 
   def show

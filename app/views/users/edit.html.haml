@@ -1,4 +1,12 @@
 = render "shared/header"
+
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
+
 .setting.px-2.pt-4{class: "px-1@s pt-1@s"}
   .setting_container
     .setting_menu
@@ -22,6 +30,18 @@
         %span.setting_titleSeparator /
         %span.setting_title ユーザー設定
       =form_for @user,url:setting_account_path, html:{id:"edit_user", class:"simple_form edit_user"} do |f|
+        .st-Form.nickname
+          %label.st-Form_label ユーザー名
+          = f.text_field :nickname ,placeholder: "ユーザー名は半角英字と「-」が使用できます", id:"user_nickname", class:"st-Form_text", required:"required"
+        .st-Form_help
+          -if @user.errors.messages[:nickname].any?
+            = render 'layouts/validates_error', errors:@user.errors.full_messages_for(:nickname)
+        .st-Form.email
+          %label.st-Form_label メールアドレス
+          = f.text_field :email ,placeholder: "xxx@xxx", id:"user_email", class:"st-Form_text",value:@email
+        .st-Form_help
+          -if @user.errors.messages[:email].any?
+            = render 'layouts/validates_error', errors:@user.errors.full_messages_for(:email)
         .st-Form.icon
           %label.st-Form_label アイコン
           = f.file_field :icon ,id:"lefile", style:"display:none"
@@ -32,17 +52,5 @@
           空の状態で更新することで削除できます。
           -if @user.errors.messages[:icon].any?
             = render 'layouts/validates_error', errors:@user.errors.full_messages_for(:icon)
-        .st-Form.email
-          %label.st-Form_label メールアドレス
-          = f.text_field :email ,placeholder: "xxx@xxx", id:"user_email", class:"st-Form_text",value:@email
-        .st-Form_help
-          -if @user.errors.messages[:email].any?
-            = render 'layouts/validates_error', errors:@user.errors.full_messages_for(:email)
-        .st-Form.nickname
-          %label.st-Form_label ユーザー名
-          = f.text_field :nickname ,placeholder: "ユーザー名は半角英字と「-」が使用できます", id:"user_nickname", class:"st-Form_text"
-        .st-Form_help
-          -if @user.errors.messages[:nickname].any?
-            = render 'layouts/validates_error', errors:@user.errors.full_messages_for(:nickname)
         = f.submit :"更新する", class:"st-Form_submit"
 = render "shared/footer"

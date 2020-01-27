@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     delete 'signout', to: 'users/sessions#destroy'
     get 'edit', to: 'devise/registrations#edit'
   end
-  resources :articles do
+  resources :articles, except: :index do
     collection do
       post 'image'     # 画像ドラッグドロップの処理
       post 'image2'    # 画像選択の処理
