@@ -3,9 +3,9 @@
   = form_with model:@article, local: true, class: "editor" do |f|
     .editor_content
       .editorTitle
-        = f.text_field :title, class: 'form-control form-control-lg', id: 'article_title', placeholder: 'タイトル'
+        = f.text_field :title, class: 'form-control form-control-lg', id: 'article_title', placeholder: 'タイトル', required:"required"
       .editorCategory
-        %input{type: "text", class: 'form-control', placeholder: '関連するタグをスペース区切りで５つまで入力'}
+        -# %input{type: "text", class: 'form-control', placeholder: '関連するタグをスペース区切りで５つまで入力'}
       .editorBody-onUpdate
         .editorMarkdown
           .editorMarkdown_header
@@ -15,7 +15,7 @@
               %input{type: "file", id: 'image_file', name: 'images', value: 'image'}
           .editorMarkdown_panel
             .Markdown_panel
-              = f.text_area :text, rows: 5, class: 'form-control', id: 'article_text', placeholder: '記事を書いて共有しよう'
+              = f.text_area :text, rows: 5, class: 'form-control', id: 'article_text', placeholder: '記事を書いて共有しよう', required:"required"
         .editorPreview
           .editorPreview_header
             .header_text
@@ -24,4 +24,15 @@
             #marked-area
       .editorFooter
         .editorFooter_save
-          = f.submit 'Quuta に投稿', onclick: "submit();", type: "button", class: 'btn btn-success'
+          = f.submit 'Quuta に投稿', class: 'btn btn-success'
+
+:javascript
+  $(function(){
+    $("#article_title"). keydown(function(e) {
+        if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+            return false;
+        } else {
+            return true;
+        }
+    });
+  });

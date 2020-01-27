@@ -5,4 +5,7 @@ class Article < ApplicationRecord
   has_many :likes, foreign_key: :article_id, dependent: :destroy
   has_many :favorites, foreign_key: :article_id, dependent: :destroy
   has_many :comments, foreign_key: :article_id, dependent: :destroy
+
+  validates :title, presence: true
+  validates :text, presence: true
 end
