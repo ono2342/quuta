@@ -9,9 +9,9 @@ https://quuta.net/
 ​
 ### 使用技術
 ​
-Ruby 2.5.1 
-Rails 5.2.3 
-AWS 
+Ruby 2.5.1  
+Rails 5.2.3  
+AWS  
 - EC2
 - S3
 - Route53
