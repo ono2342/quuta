@@ -46,6 +46,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
+  gem 'bullet'
 end
 
 group :development do
@@ -97,3 +98,4 @@ gem 'qiita-markdown'
 gem 'rails-i18n'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'redcarpet', '~> 2.3.0'
+gem 'ransack'

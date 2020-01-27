@@ -1,0 +1,39 @@
+= render "shared/header"
+.search-content
+  .search-content-posts
+    .search-content-title
+      =@search_word +"の検索結果"
+    -@articles.each do|article|
+      .search-article-wrapper
+        .search-article
+          .search-article-icon
+            =link_to "/profile/#{article.user.id}/posts" do
+              -if article.user.icon.present?
+                =image_tag article.user.icon.url
+              -else
+                =image_tag "quutan.jpg"
+          .search-article-detail
+            .search-article-title
+              =link_to "/articles/#{article.id}" do
+                =truncate(article.title, length: 50)
+              .search-article-text
+                =truncate(article.text, length: 150)
+              .search-article-favoritedate-area
+                - if @favorites.include?(article.id)
+                  .article-favorited{data:{id:article.id}}
+                    %i.fas.fa-star
+                - else
+                  .article-favorite{data:{id:article.id}}
+                    %i.fas.fa-star
+                .search-article-date
+                  =link_to article.user.nickname, "/profile/#{article.user.id}/posts"
+                  ="が"+article.created_at.strftime("%Y年%m月%d日")+"に投稿"
+            .search-article-likes
+              %i.fas.fa-baseball-ball
+                =article.likes.count
+              .search-article-comments
+                %i.fas.fa-comment
+                  =article.comments.count
+    .search-pagination
+      =paginate @articles
+= render "shared/footer"

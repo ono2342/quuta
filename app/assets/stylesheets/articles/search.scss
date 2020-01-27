@@ -1,0 +1,128 @@
+.search-content{
+  min-height: 40rem;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  width: 100%;
+  .search-content-title{
+    font-size: 1.8rem;
+    border-bottom: 0.1rem solid #eee;
+    font-weight: 600
+  }
+  .search-article-wrapper{
+    border-bottom: 0.1rem solid #eee;
+    .search-article{
+      margin: 1.5rem 0;
+      display: flex;
+      .search-article-icon{
+        img{
+        border-radius:1rem;
+        width: 6rem;
+        height: 6rem;
+        }
+      }
+      .search-article-detail{
+        display: flex;
+        width: 100%;
+        .search-article-title{
+          font-size: 1.6rem;
+          margin-left: 2rem;
+          width: 85%;
+          a{
+            color: #337ab7;
+          }
+          .search-article-text{
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+          }
+          .search-article-favoritedate-area{
+            display: flex;
+            margin-top: 1rem;
+            .article-favorited{
+              font-size: 1.4rem;
+              background-color: #F4AC5A;
+              border: 0.2rem solid #F4AC5A;
+              color:#FFFF01;
+              border-radius: 0.3rem;
+              cursor: pointer;
+            }
+            .article-favorite{
+              font-size: 1.4rem;
+              background-color: #777;
+              border: 0.2rem solid #777;
+              color:#FFF;
+              border-radius: 0.3rem;
+              cursor: pointer;
+            }
+            .search-article-date{
+              font-size: 1.4rem;
+              margin-left: 1rem;
+            }
+          }
+        }
+        .search-article-likes{
+          margin: 0 2rem 0 auto;
+          font-size: 1.6rem;
+          color: #F4AC5A;
+          width: 6rem;
+          .search-article-comments{
+            margin-top: 0.5rem;
+            font-size: 1.6rem;
+            .fa-comment{
+            }
+          }
+        }
+      }
+    }
+  }
+  nav{
+    .pagination{
+      // display: inline;
+      padding-left: 0;
+      margin:4rem auto;
+      border-radius: 3px;
+      width: 5rem;
+      a{
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+  // 画面サイズにより可変
+  @media (max-width: 576px){
+    .search-main{
+      padding: 1rem;
+      width: 100%;
+      .search-usersearch{
+        display:block;
+        .usersearch-left{
+          .search-icon{
+            img{
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+        .usersearch-right{
+          width: 100%;
+          margin-left: 0;
+          margin-top: 1rem;
+        }
+      }
+      .search-content-wrapper{
+        display: block;
+        .search-content{
+          min-height: 40rem;
+          padding-left: 0;
+          padding-top: 0;
+          width: 100%;
+        }
+        .search-sidebar {
+          position: static;
+          margin: 4rem 0 0 1rem;
+          text-align: center;
+          width: 100%;
+      }
+      }
+    }
+  }
