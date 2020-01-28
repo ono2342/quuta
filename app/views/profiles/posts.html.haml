@@ -28,7 +28,7 @@
                       .article-favorite{data:{id:article.id}}
                         %i.fas.fa-star
                     .profile-article-date
-                      =link_to @user.nickname, "/profile/#{@user.id}"
+                      =link_to @user.nickname, "/profile/#{@user.id}/posts"
                       ="が"+article.created_at.strftime("%Y年%m月%d日")+"に投稿"
                 .profile-article-likes
                   %i.fas.fa-baseball-ball

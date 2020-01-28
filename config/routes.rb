@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       post 'image'     # 画像ドラッグドロップの処理
       post 'image2'    # 画像選択の処理
+      get  'search' # 記事検索
     end
     member do
       post 'comment'

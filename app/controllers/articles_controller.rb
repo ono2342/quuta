@@ -2,13 +2,23 @@
 
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit]
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: %i[show search]
 
   def new
     unless current_user.nickname.present?
       redirect_to setting_account_path(current_user), notice: '記事を投稿するにはユーザー名が必要です。'
     end
     @article = Article.new
+  end
+
+  def search
+    redirect_to root_path if params[:q].nil?
+    @search_word = params[:q]
+    @search_word_array = params[:q].split(/[\p{blank}\s]+/)
+    @search = Article.ransack(title_or_text_cont_any: @search_word_array)
+    @search.sorts = 'id desc'
+    @articles = @search.result.page(params[:page]).per(15)
+    @favorites = Favorite.where(user: current_user).pluck('article_id')
   end
 
   def image # 画像ドラッグドロップの処理
