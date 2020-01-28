@@ -1,7 +1,6 @@
 .search-content{
-  min-height: 40rem;
-  padding-left: 2rem;
-  padding-top: 2rem;
+  min-height: 50rem;
+  padding:3rem 6rem;
   width: 100%;
   .search-content-title{
     font-size: 1.8rem;
@@ -22,7 +21,7 @@
       }
       .search-article-detail{
         display: flex;
-        width: 100%;
+        width: calc( 100% - 6rem);
         .search-article-title{
           font-size: 1.6rem;
           margin-left: 2rem;
@@ -86,6 +85,10 @@
       }
     }
   }
+}
+
+.highlight{
+  background-color:yellow;
 }
 
   // 画面サイズにより可変

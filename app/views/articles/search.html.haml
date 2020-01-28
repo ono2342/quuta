@@ -1,5 +1,5 @@
 = render "shared/header"
-.search-content
+.search-content{"data-word":"#{@search_word_array}"}
   .search-content-posts
     .search-content-title
       =@search_word +"の検索結果"
@@ -14,8 +14,9 @@
                 =image_tag "quutan.jpg"
           .search-article-detail
             .search-article-title
-              =link_to "/articles/#{article.id}" do
-                =truncate(article.title, length: 50)
+              .search-article-title-text
+                =link_to "/articles/#{article.id}" do
+                  =truncate(article.title, length: 50,)
               .search-article-text
                 =truncate(article.text, length: 150)
               .search-article-favoritedate-area
