@@ -76,6 +76,12 @@ class ArticlesController < ApplicationController
     article.destroy if article.user_id == current_user.id
   end
 
+  def comment_destroy
+    comment = Comment.find(params[:comment_id])
+    comment.destroy if comment.user_id == current_user.id
+    redirect_to action: 'show', id: params[:id]
+  end
+
   private
 
   def article_params

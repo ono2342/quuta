@@ -222,6 +222,10 @@
                         .commentHeader_metadata.pull-right
                           .text-right
                             =comment.created_at.strftime("%Y-%m-%d %H:%M")
+                          .comment-destroy-link.text-right
+                            - if user_signed_in? && current_user.id == comment.user_id
+                              %a{href: "", id: "comment-destroy-modal"} 削除
+                              = link_to '削除', "/articles/#{@article.id}/comment_destroy/#{comment.id}", method: :delete, id: "comment-destroy-trigger", style: "display:none;"
                       .comment_content
                         .it-MdContent
                           = qiita_markdown(comment.comment)
