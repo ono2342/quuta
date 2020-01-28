@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     end
     member do
       post 'comment'
+      delete 'comment_destroy/:comment_id', to: 'articles#comment_destroy'
     end
   end
   root 'homes#index'
