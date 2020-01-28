@@ -633,10 +633,8 @@
         }
         .commentHeader_metadata {
           width: 100%;
-          .text-right {
-            padding-top: 2.3rem;
-            font-size: 1.2rem;
-          }
+          font-size: 1.2rem;
+          padding-top: 0.4rem;
         }
       }
       .comment_content {
@@ -646,7 +644,7 @@
         border: solid 0.1rem #ccc;
         padding: 1.8rem 3.2rem;
         margin-top: 1.1rem;
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
         .it-MdContent {
           font-size: 1.8rem;
           color: #333;
