@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-class ErrorsController < ActionController::Base
+class ErrorsController < ApplicationController
   layout 'application'
-
   rescue_from StandardError, with: :render_500
   rescue_from ActionController::RoutingError, with: :render_404
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
@@ -21,7 +20,5 @@ class ErrorsController < ActionController::Base
     render template: 'errors/error_500', status: 500, layout: 'application'
   end
 
-  def show
-    raise ['action_dispatch.exception']
-  end
+  def show; raise env["action_dispatch.exception"]; end
 end
