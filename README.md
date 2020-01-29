@@ -18,11 +18,12 @@ AWS
 
 ### 機能一覧
 
-- ユーザ登録(devise),ログイン機能全般
+- ユーザ登録(devise),ログイン機能
 - facebook/google/Twitter での omniauth 認証
 - 記事投稿（マークダウン記法）、リアルタイムプレビュー表示
-- 画像のプレビュー機能(jQuery)
+- 画像のプレビュー機能
 - 複数画像アップロード(carrierwave)
 - 記事のいいね機能、お気に入り機能
+- 記事の検索機能（ransack）
 - ページネーション(kaminari)
 - 自動デプロイ(capistrano)

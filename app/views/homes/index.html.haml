@@ -1,17 +1,12 @@
 = render "shared/header"
-
-= link_to "logout","/signout",{method: :delete}
-= Rails.env
-- if user_signed_in?
-  = current_user.nickname
-  = current_user.email
-- else
+//　ログインフォーム
+- unless user_signed_in?
   .nl-Hero
     .nl-Hero_inner
       .nl-Hero_start
-        %h1.mb-4.nl-Hero_title How developers code is here.
+        %h1.mb-4.nl-Hero_title 野球を愛する人に。
         %p.nl-Hero_lead 
-          Qiitaは、エンジニアリングに関する知識を記録・共有するためのサービスです。コードを書いていて気づいたことや、自分がハマったあの仕様について、他のエンジニアと知見を共有しましょう ;)
+          Quutaは野球に関する知識を共有するためのサービスです。
       .nl-Hero_end
         .nl-SocialSignupWrapper
           =link_to user_twitter_omniauth_authorize_path ,class:"nl-SocialSignup nl-SocialSignup-twitter" do
@@ -41,5 +36,35 @@
             .nl-SignupForm_buttonArea
               .nl-SignupForm_button
                 = f.submit class:"btn btn-primary btn-block btn-lg", "data-disable-with": "送信中……", value:"登録する"
-
+// 記事一覧
+.home-container
+  .home-content-left
+  .home-content-center
+    .home-content-posts
+      .home-content-title
+        最新記事
+      -@articles.each do|article|
+        .home-article-wrapper
+          .home-article
+            .home-article-icon
+              =link_to "/profile/#{article.user.id}/posts" do
+                -if article.user.icon.present?
+                  =image_tag article.user.icon.url
+                -else
+                  =image_tag "quutan.jpg"
+            .home-article-detail
+              .home-article-title
+                =link_to "/articles/#{article.id}" do
+                  =article.title
+                .home-date-wrapper
+                  .home-article-date
+                    =link_to article.user.nickname, "/profile/#{article.user.id}/posts"
+                    ="が"+article.created_at.strftime("%Y年%m月%d日")+"に投稿"
+              .home-article-likes
+                %i.fas.fa-baseball-ball
+                  =article.likes.count
+                .home-article-comments
+                  %i.fas.fa-comment
+                    =article.comments.count
+  .home-content-right
 = render "shared/footer"

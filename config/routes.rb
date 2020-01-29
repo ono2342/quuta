@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users, skip: %i[sessions password registrations],
                      controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  as :user do
+  devise_scope :user do
     get 'signup', to: 'users/registrations#new'
     post 'signup', to: 'users/registrations#create'
     get 'login', to: 'users/sessions#new'
