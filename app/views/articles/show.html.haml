@@ -76,10 +76,10 @@
                 -#             問題がある記事を報告する
             %h1.it-Header_title
               =@article.title
-            .it-Tags
-              //タグ実装時、活用
-              %a.it-Tags_item{href:"/tags/chaosengineering"}
-                %span タグ
+            -# .it-Tags
+            -#   //タグ実装時、活用
+            -#   %a.it-Tags_item{href:"/tags/chaosengineering"}
+            -#     %span タグ
           %div{"data-mount-target":"mobileArticleActions"}
           %section.it-MdContent{itemprop:"articleBody"}
             #item-2245429ce96027e27949
@@ -256,7 +256,9 @@
                           = f.submit 'コメントする', onclick: "submit();", type: "button",class:"btn-primary"
                   -else
                     .not-comment
-                      コメントはできません
+                      コメントをするには
+                      =link_to "ログイン", login_path
+                      してください
 
 = render "shared/footer"
 

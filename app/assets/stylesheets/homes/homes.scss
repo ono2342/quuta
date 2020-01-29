@@ -1,7 +1,7 @@
 .nl-Hero {
   width: 100%;
   padding: 3.2rem;
-  background-color: #55c500;
+  background-color: #F4AC5A;
   display: flex;
   align-items: center;
   .nl-Hero_inner {
@@ -11,6 +11,7 @@
     max-width: 110rem;
     margin: 0 auto;
     .nl-Hero_start {
+      margin-right: 10rem;
       .nl-Hero_title {
         font-size: 4.8rem;
         font-weight: 700;
@@ -140,3 +141,104 @@
     }
   }
 }
+
+//記事一覧
+.home-container{
+  padding-top: 2.4rem;
+  padding-bottom: 4rem;
+  display: grid;
+  display: -ms-grid;
+  grid-template-columns: 25rem calc(100% - 50rem) 25rem;
+  -ms-grid-columns: 25rem calc(100% - 50rem) 25rem;
+  grid-template-rows: minmax(27rem,auto) 1fr;
+  -ms-grid-rows: minmax(27rem,auto) 1fr;
+  max-width: 128rem;
+  width: calc(100% - 5rem);
+  margin-right: auto;
+  margin-left: auto;
+  .home-content-left{}
+  .home-content-center{
+    width: 100%;
+    min-height: 50rem;
+    .home-content-posts{
+      .home-content-title{
+        font-size: 1.8rem;
+        border-bottom: 0.1rem solid #eee;
+        font-weight: 600
+      }
+      .home-article-wrapper{
+        border-bottom: 0.1rem solid #eee;
+        .home-article{
+          margin: 1.5rem 0;
+          display: flex;
+          .home-article-icon{
+            img{
+              border-radius:1rem;
+              width: 6rem;
+              height: 6rem;
+            }
+          }
+          .home-article-detail{
+            display: flex;
+            width: 100%;
+            .home-article-title{
+              font-size: 1.6rem;
+              margin-left: 2rem;
+              width: 85%;
+              a{
+                color: #337ab7;
+              }
+              .home-date-wrapper{
+                .home-article-date{
+                  font-size: 1.4rem;
+                  color: #999;
+                }
+              }
+            }
+            .home-article-likes{
+              margin: 0 2rem 0 auto;
+              font-size: 1.6rem;
+              color: #F4AC5A;
+              width: 6rem;
+              .home-article-comments{
+                margin-top: 0.5rem;
+                font-size: 1.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .home-content-right{}
+}
+
+ //画面サイズごとの出し分け
+ @media (max-width: 1200px){
+ }
+
+ @media (max-width: 991px){
+  .home-container{
+    grid-template-columns: 25rem calc(100% - 25rem) 0;
+    -ms-grid-columns: 25rem calc(100% - 25rem) 0;
+
+  }
+  .home-content-right{
+    display: none;
+  }
+ }
+
+ @media (max-width: 770px){
+  .home-container{
+    display: block;
+    width: 100%;
+    padding: 2rem;
+  }
+  .home-content-left{
+    display: none;
+  }
+  .home-content-right{
+    display: none;
+  }
+
+ }
