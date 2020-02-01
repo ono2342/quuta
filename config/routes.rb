@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     get 'login', to: 'users/sessions#new'
     post 'login', to: 'users/sessions#create'
     delete 'signout', to: 'users/sessions#destroy'
-    get 'edit', to: 'devise/registrations#edit'
   end
   resources :articles, except: :index do
     collection do
