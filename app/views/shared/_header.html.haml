@@ -29,7 +29,7 @@
                 = link_to "プロフィール編集", setting_profile_path(current_user), class: "dropdown-item"
                 = link_to "ユーザー設定", setting_account_path(current_user), class: "dropdown-item"
                 .dropdown-divider
-                = link_to "ログアウト", signout_path(current_user), method: :delete, class: "dropdown-item"
+                = link_to "ログアウト", signout_path, method: :delete, class: "dropdown-item"
     - else
       .st-Header_end
         = link_to signup_path, class: "st-Header_signupButton" do
