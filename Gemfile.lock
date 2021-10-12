@@ -271,7 +271,8 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     pygments.rb (1.2.1)
       multi_json (>= 1.0.0)
     qiita-markdown (0.27.0)
@@ -448,7 +449,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-twitter
   pry-rails
-  puma (~> 3.11)
+  puma (~> 4.3)
   qiita-markdown
   rails (~> 5.2.3)
   rails-i18n
